@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Googol К Одному</string>
+
+    <string name="play_button">Играть</string>
+    <string name="highscores_button">Лучший счет</string>
+    <string name="rules_button">Правила</string>
+
+    <string name="rules">Игра рассчитана на двух игроков. Один игрок загадывает некоторую фразу, а задача другого угадать самые популярные продолжения фразы, которые предлагает поисковая система Google. После трех промахов подсчитываются очки, и игроки меняются ролями.</string>
+    <string name="error_sound">Если вы дадите неправильный ответ, прозвучит такой звуковой сигнал:</string>
+    <string name="sound_button">Звуковой сигнал</string>
+
+    <string name="names_text">Введите имена игроков</string>
+    <string name="start_button">Начать</string>
+</resources>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:padding="20dip">
+
+    <Button
+            android:id="@+id/playButton"
+            android:layout_width="200dip"
+            android:layout_height="50dip"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dip"
+            android:text="@string/play_button"/>
+
+    <Button
+            android:id="@+id/highscoresButton"
+            android:layout_width="200dip"
+            android:layout_height="50dip"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dip"
+            android:text="@string/highscores_button"/>
+
+    <Button
+            android:id="@+id/rulesButton"
+            android:layout_width="200dip"
+            android:layout_height="50dip"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dip"
+            android:text="@string/rules_button"/>
+
+</LinearLayout>
+
