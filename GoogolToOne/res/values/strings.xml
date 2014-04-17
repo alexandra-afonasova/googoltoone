@@ -12,4 +12,29 @@
 
     <string name="names_text">What do they call you?</string>
     <string name="start_button">Start</string>
+
+    <!-- Strings for Answer typing layout -->
+    <string name="beginning_request_ans_typ">Beginning request:</string>
+    <string name="your_answer_ans_typ">Your answer:</string>
+    <string name="default_answer_ans_typ">answer</string>
+    <string name="check_ans_typ">Check!</string>
+
+    <!-- Strings for Round result layout -->
+    <string name="title_activity_ro_res">Round Result</string>
+    <string name="bingo_ro_res">Bingo!</string>
+    <!-- Set of strings for congratulations -->
+    <string name="congratulation1_ro_res">You guessed 3 most popular answer and earn 20 points!</string>
+
+    <string name="next_step_ro_res">Next step: </string>
+    <string name="until_end_rounds_ro_res">Until the end of the game remains Rounds: </string>
+    <string name="next_round_ro_res">Next Round</string>
+
+    <!-- Strings for End Game layout-->
+    <string name="title_activity_end_game">End Game</string>
+    <string name="congratulation1_end_game">Congratulations, </string>
+    <string name="congratulation2_end_game">You win!</string>
+    <string name="score_end_game">Final score: </string>
+    <string name="btn_again_end_game">Again</string>
+    <string name="btn_enough_end_game">Enough</string>
+
 </resources>

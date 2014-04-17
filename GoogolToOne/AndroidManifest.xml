@@ -17,5 +17,9 @@
                   android:screenOrientation="portrait"/>
         <activity android:name=".GameStartActivity"/>
         <activity android:name=".NextActivity"/>
+        <activity android:name=".EnterQueryActivity"/>
+        <activity android:name=".AnswerTyping"/>
+        <activity android:name=".RoundResultActivity"/>
+        <activity android:name=".EndGameActivity"/>
     </application>
 </manifest>
