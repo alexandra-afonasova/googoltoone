@@ -37,4 +37,7 @@
     <string name="score_end_game">Итоговый счёт: </string>
     <string name="btn_again_end_game">Ещё раз</string>
     <string name="btn_enough_end_game">Хватит</string>
+
+    <!-- Strings for Best scores layout-->
+    <string name="title_best_sc">Лучшие матчи</string>
 </resources>

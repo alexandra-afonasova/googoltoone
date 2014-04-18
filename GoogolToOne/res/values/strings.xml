@@ -36,5 +36,6 @@
     <string name="score_end_game">Final score: </string>
     <string name="btn_again_end_game">Again</string>
     <string name="btn_enough_end_game">Enough</string>
+    <string name="title_best_sc">Best Scores</string>
 
 </resources>

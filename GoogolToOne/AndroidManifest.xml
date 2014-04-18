@@ -21,5 +21,6 @@
         <activity android:name=".AnswerTyping"/>
         <activity android:name=".RoundResultActivity"/>
         <activity android:name=".EndGameActivity"/>
+        <activity android:name=".BestScoresActivity"/>
     </application>
 </manifest>
