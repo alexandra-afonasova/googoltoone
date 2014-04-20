@@ -46,6 +46,7 @@ public class StartupActivity extends Activity {
     }
 
     private void onHighscroesClickEvent() {
+        //CR move message string to resources
         //Placeholder
         Toast.makeText(getApplicationContext(), "Not implemented yet", Toast.LENGTH_SHORT).show();
     }

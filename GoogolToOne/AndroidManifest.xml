@@ -3,7 +3,9 @@
           package="com.noveogroup.googoltoone"
           android:versionCode="1"
           android:versionName="1.0">
-    <uses-sdk android:minSdkVersion="15"/>
+    <uses-sdk android:minSdkVersion="8"/>
+
+    <!--CR use the same screenOrientation property for all activities-->
     <application android:label="@string/app_name" android:icon="@drawable/ic_launcher">
         <activity android:name="StartupActivity"
                   android:label="@string/app_name"

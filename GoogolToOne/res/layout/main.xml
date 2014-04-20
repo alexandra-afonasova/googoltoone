@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- CR write attributes in following order: id, layout_width, layout_height, other -->
+<!-- CR move all dimensions to resources -->
+<!-- CR use match_parent instead of fill_parent-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="fill_parent"
