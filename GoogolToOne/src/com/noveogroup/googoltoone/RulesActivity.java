@@ -6,9 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-/**
- * Created by Sandra on 10.04.2014.
- */
 public class RulesActivity extends Activity {
 
     @Override

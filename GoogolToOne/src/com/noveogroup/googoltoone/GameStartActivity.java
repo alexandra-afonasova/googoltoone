@@ -7,9 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-/**
- * Created by Sandra on 10.04.2014.
- */
 public class GameStartActivity extends Activity {
 
     //CR Move tags to NextActivity
