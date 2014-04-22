@@ -5,9 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
-/**
- * Created by Sandra on 10.04.2014.
- */
 public class NextActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {

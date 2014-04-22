@@ -7,11 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-/**
- * Created by Sandra on 10.04.2014.
- */
 public class GameStartActivity extends Activity {
 
+    //CR Move tags to NextActivity
     //Extras tags
     public static final String player1Tag = "player1";
     public static final String player2Tag = "player2";

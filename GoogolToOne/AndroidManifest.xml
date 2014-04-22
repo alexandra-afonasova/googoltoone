@@ -3,7 +3,9 @@
           package="com.noveogroup.googoltoone"
           android:versionCode="1"
           android:versionName="1.0">
-    <uses-sdk android:minSdkVersion="15"/>
+    <uses-sdk android:minSdkVersion="8"/>
+
+    <!--CRDONE use the same screenOrientation property for all activities-->
     <application android:label="@string/app_name" android:icon="@drawable/ic_launcher">
         <activity android:name="StartupActivity"
                   android:label="@string/app_name"
@@ -15,12 +17,19 @@
         </activity>
         <activity android:name=".RulesActivity"
                   android:screenOrientation="portrait"/>
-        <activity android:name=".GameStartActivity"/>
-        <activity android:name=".NextActivity"/>
-        <activity android:name=".EnterQueryActivity"/>
-        <activity android:name=".AnswerTyping"/>
-        <activity android:name=".RoundResultActivity"/>
-        <activity android:name=".EndGameActivity"/>
-        <activity android:name=".BestScoresActivity"/>
+        <activity android:name=".GameStartActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name=".NextActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name=".EnterQueryActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name=".AnswerTyping"
+                  android:screenOrientation="portrait"/>
+        <activity android:name=".RoundResultActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name=".EndGameActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name=".BestScoresActivity"
+                  android:screenOrientation="portrait"/>
     </application>
 </manifest>

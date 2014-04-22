@@ -6,9 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
 
-/**
- * Created by anatoly on 20.04.14.
- */
 public class BestScoresActivity extends Activity {
     private LoaderManager loaderManager;
     private SimpleCursorAdapter adapter;
