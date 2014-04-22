@@ -4,9 +4,6 @@ import android.content.ContentResolver;
 import android.net.Uri;
 import android.provider.BaseColumns;
 
-/**
- * Created by anatoly on 20.04.14.
- */
 public class ContentDescriptor {
     private static final String AUTHORITY = "com.noveogroup.googoltoone.database.GTOContentProvider";
     private static final Uri CONTENT_BASE_URI = new Uri.Builder().scheme(ContentResolver.SCHEME_CONTENT).authority(AUTHORITY).build();
@@ -27,7 +24,7 @@ public class ContentDescriptor {
 
         public static class Cols {
             public static final String ID = BaseColumns._ID;
-            public static final String TITLE = "name";
+            public static final String NAME = "name";
         }
     }
 

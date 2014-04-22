@@ -48,7 +48,9 @@ public class StartupActivity extends Activity {
     private void onHighScoresClickEvent() {
         //CR move message string to resources
         //Placeholder
-        Toast.makeText(getApplicationContext(), "Not implemented yet", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(), "Not implemented yet", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(StartupActivity.this, BestScoresActivity.class);
+        startActivity(intent);
     }
 
     private void onRulesClickEvent() {
