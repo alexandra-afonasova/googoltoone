@@ -84,6 +84,7 @@ public class GoogleSuggestion extends AsyncTask<String, Void , ArrayList<String>
     @Override
     protected void onPostExecute(ArrayList<String> arrayList) {
         TextView results = (TextView) activity.findViewById(R.id.results);
+        results.setText("");
             for (String suggestion : arrayList) {
                 results.append(suggestion + "\n");
             }

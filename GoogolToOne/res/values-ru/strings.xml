@@ -6,6 +6,9 @@
     <string name="play_button">Играть</string>
     <string name="highscores_button">Лучший счет</string>
     <string name="rules_button">Правила</string>
+    <string name="ok">Ок</string>
+    <string name="no_connection_title">Нет доступа в Интернет</string>
+    <string name="no_connection_message">Чтобы играть в эту игру, необходим доступ к сети Интернет. Убедитесь, что ваше устройство подключено, и попробуйте еще раз.</string>
 
     <string name="rules">Игра рассчитана на двух игроков. Один игрок загадывает некоторую фразу, а задача другого угадать самые популярные продолжения фразы, которые предлагает поисковая система Google. После трех промахов подсчитываются очки, и игроки меняются ролями.</string>
     <string name="error_sound">Если вы дадите неправильный ответ, прозвучит такой звуковой сигнал:</string>

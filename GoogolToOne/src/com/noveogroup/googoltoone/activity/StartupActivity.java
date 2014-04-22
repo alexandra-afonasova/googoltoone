@@ -1,7 +1,12 @@
 package com.noveogroup.googoltoone.activity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -42,12 +47,16 @@ public class StartupActivity extends Activity {
     }
 
     private void onPlayClickEvent() {
-        Intent intent = new Intent(StartupActivity.this, GameStartActivity.class);
-        startActivity(intent);
+        if(isOnline()) {
+            Intent intent = new Intent(StartupActivity.this, GameStartActivity.class);
+            startActivity(intent);
+        }
+        else {
+            popDialog();
+        }
     }
 
     private void onHighScoresClickEvent() {
-        //CR move message string to resources
         //Placeholder
         Toast.makeText(getApplicationContext(), "Not implemented yet", Toast.LENGTH_SHORT).show();
     }
@@ -56,5 +65,26 @@ public class StartupActivity extends Activity {
         Intent intent = new Intent(StartupActivity.this, RulesActivity.class);
         startActivity(intent);
     }
+
+    private boolean isOnline() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        if(netInfo != null && netInfo.isConnectedOrConnecting()) {
+            return true;
+        }
+        return false;
+    }
+
+    private void popDialog() {
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.no_connection_title)
+                .setMessage(R.string.no_connection_message)
+                .setNeutralButton(R.string.ok, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                })
+        .show();
+        }
 
 }

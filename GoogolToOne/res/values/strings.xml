@@ -5,6 +5,9 @@
     <string name="play_button">Play</string>
     <string name="highscores_button">High scores</string>
     <string name="rules_button">Rules</string>
+    <string name="ok">Ok</string>
+    <string name="no_connection_title">No Internet Connection</string>
+    <string name="no_connection_message">You need Internet connection to play this game. Please, establish connection and try again.</string>
 
     <string name="rules">This game is designed for two players. The first player proposes a phrase and a second one should guess the most popular conclusion presented by the Google search engine. When three mistakes are made players exchange roles.</string>
     <string name="error_sound">When you make a mistake you will hear this sound:</string>
