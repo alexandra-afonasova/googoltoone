@@ -10,6 +10,7 @@ import com.noveogroup.googoltoone.R;
 
 public class GameStartActivity extends Activity {
 
+    //CR Move tags to NextActivity
     //Extras tags
     public static final String player1Tag = "player1";
     public static final String player2Tag = "player2";

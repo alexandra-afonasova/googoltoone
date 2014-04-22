@@ -13,4 +13,31 @@
 
     <string name="names_text">Введите имена игроков</string>
     <string name="start_button">Начать</string>
+
+    <!-- Strings for Answer typing layout -->
+    <string name="beginning_request_ans_typ">Начало запроса:</string>
+    <string name="your_answer_ans_typ">Ваш ответ:</string>
+    <string name="default_answer_ans_typ">ответ</string>
+    <string name="check_ans_typ">Проверить!</string>
+
+    <!-- Strings for Round result -->
+    <string name="title_activity_ro_res">Итоги раунда</string>
+    <string name="bingo_ro_res">Ура!</string>
+    <!-- Set of strings for congratulations -->
+    <string name="congratulation1_ro_res">Вы отгадали 3 самых популярных ответа и заработали 20 очков!</string>
+
+    <string name="next_step_ro_res">Теперь ходит: </string>
+    <string name="until_end_rounds_ro_res">До конца игры осталось раундов: </string>
+    <string name="next_round_ro_res">Следующий раунд</string>
+
+    <!-- Strings for End Game layout-->
+    <string name="title_activity_end_game">Конец игры</string>
+    <string name="congratulation1_end_game">Поздравляем, </string>
+    <string name="congratulation2_end_game">Победа за Вами!</string>
+    <string name="score_end_game">Итоговый счёт: </string>
+    <string name="btn_again_end_game">Ещё раз</string>
+    <string name="btn_enough_end_game">Хватит</string>
+
+    <!-- Strings for Best scores layout-->
+    <string name="title_best_sc">Лучшие матчи</string>
 </resources>

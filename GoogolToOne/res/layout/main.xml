@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
+
+<!-- CRDONE write attributes in following order: id, layout_width, layout_height, other -->
+<!-- CR move all dimensions to resources -->
+<!-- CR use match_parent instead of fill_parent-->
+<LinearLayout
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
+              android:orientation="vertical"
+              xmlns:android="http://schemas.android.com/apk/res/android"
               android:padding="20dip">
 
     <Button

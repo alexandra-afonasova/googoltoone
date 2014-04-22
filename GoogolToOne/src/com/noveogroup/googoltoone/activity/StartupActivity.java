@@ -29,7 +29,7 @@ public class StartupActivity extends Activity {
         highscoresButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onHighscroesClickEvent();
+                onHighScoresClickEvent();
             }
         });
         rulesButton.setOnClickListener(new View.OnClickListener() {
@@ -46,7 +46,8 @@ public class StartupActivity extends Activity {
         startActivity(intent);
     }
 
-    private void onHighscroesClickEvent() {
+    private void onHighScoresClickEvent() {
+        //CR move message string to resources
         //Placeholder
         Toast.makeText(getApplicationContext(), "Not implemented yet", Toast.LENGTH_SHORT).show();
     }
