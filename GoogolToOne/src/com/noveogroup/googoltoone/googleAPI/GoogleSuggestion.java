@@ -1,6 +1,9 @@
 package com.noveogroup.googoltoone.googleAPI;
 
 import android.os.AsyncTask;
+import android.widget.TextView;
+import com.noveogroup.googoltoone.R;
+import com.noveogroup.googoltoone.activity.NextActivity;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -14,15 +17,26 @@ import java.net.URLConnection;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
-public class GoogleSuggestion extends AsyncTask<String, Void , ArrayList> {
+public class GoogleSuggestion extends AsyncTask<String, Void , ArrayList<String>> {
 
     private static final String GOOGLEAPIURL = "http://suggestqueries.google.com/complete/search?client=toolbar&q=";
+    private final NextActivity activity;
+
+    public GoogleSuggestion(NextActivity activity) {
+        this.activity = activity;
+    }
 
     @Override
     protected ArrayList<String> doInBackground(String... query) {
 
-        return getXML(getURL(query[0]));
-
+        if(query[0].equals("")) {
+            ArrayList<String> result = new ArrayList<String>(1);
+            result.add("");
+            return result;
+        }
+        else {
+            return getXML(getURL(query[0]));
+        }
     }
 
     private static String getURL(String query) {
@@ -67,4 +81,11 @@ public class GoogleSuggestion extends AsyncTask<String, Void , ArrayList> {
         return doc;
     }
 
+    @Override
+    protected void onPostExecute(ArrayList<String> arrayList) {
+        TextView results = (TextView) activity.findViewById(R.id.results);
+            for (String suggestion : arrayList) {
+                results.append(suggestion + "\n");
+            }
+    }
 }

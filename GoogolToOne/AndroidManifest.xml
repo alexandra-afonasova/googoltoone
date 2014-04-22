@@ -20,15 +20,15 @@
                   android:screenOrientation="portrait"/>
         <activity android:name=".activity.NextActivity"
                   android:screenOrientation="portrait"/>
-        <activity android:name=".EnterQueryActivity"
+        <activity android:name=".activity.EnterQueryActivity"
                   android:screenOrientation="portrait"/>
-        <activity android:name=".AnswerTyping"
+        <activity android:name=".activity.AnswerTyping"
                   android:screenOrientation="portrait"/>
-        <activity android:name=".RoundResultActivity"
+        <activity android:name=".activity.RoundResultActivity"
                   android:screenOrientation="portrait"/>
-        <activity android:name=".EndGameActivity"
+        <activity android:name=".activity.EndGameActivity"
                   android:screenOrientation="portrait"/>
-        <activity android:name=".BestScoresActivity"
+        <activity android:name=".activity.BestScoresActivity"
                   android:screenOrientation="portrait"/>
     </application>
 </manifest>

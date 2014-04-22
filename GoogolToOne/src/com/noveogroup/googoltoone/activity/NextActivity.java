@@ -1,16 +1,16 @@
 package com.noveogroup.googoltoone.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import com.noveogroup.googoltoone.R;
 import com.noveogroup.googoltoone.googleAPI.GoogleSuggestion;
 
-public class NextActivity extends Activity {
+public class NextActivity extends android.app.Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -31,11 +31,27 @@ public class NextActivity extends Activity {
         text1.setText(player1);
         text2.setText(player2);
 
-        suggest.setOnClickListener(new View.OnClickListener() {
+        query.addTextChangedListener(new TextWatcher() {
             @Override
-            public void onClick(View v) {
-                new GoogleSuggestion().execute(query.getText().toString());
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                TextView suggestions = (TextView) NextActivity.this.findViewById(R.id.results);
+                EditText query = (EditText) NextActivity.this.findViewById(R.id.query);
+                suggestions.setText("");
+                if(query.getText() != null) {
+                    new GoogleSuggestion(NextActivity.this).execute(query.getText().toString());
+                }
             }
         });
+
     }
 }
