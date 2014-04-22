@@ -15,4 +15,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
+    <EditText
+            android:id="@+id/query"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    <Button
+            android:id="@+id/suggest"
+            android:layout_width="200dip"
+            android:layout_height="50dip"
+            android:text="Suggest"/>
+
+    <ListView
+            android:id="@+id/list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
 </LinearLayout>
