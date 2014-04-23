@@ -16,6 +16,11 @@
     <string name="names_text">What do they call you?</string>
     <string name="start_button">Start</string>
 
+    <string name="guess_button">Let him quess</string>
+    <string name="query_text">Print in your query below</string>
+    <string name="query_empty">Start writing your query and you will see the most popular suggestions from Google</string>
+    <string name="query_invalid">Your query doesn\'t make sense to Google. Please, try again</string>
+
     <!-- Strings for Answer typing layout -->
     <string name="beginning_request_ans_typ">Beginning request:</string>
     <string name="your_answer_ans_typ">Your answer:</string>

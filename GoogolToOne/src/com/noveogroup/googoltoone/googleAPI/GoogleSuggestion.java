@@ -1,9 +1,10 @@
 package com.noveogroup.googoltoone.googleAPI;
 
 import android.os.AsyncTask;
+import android.widget.EditText;
 import android.widget.TextView;
 import com.noveogroup.googoltoone.R;
-import com.noveogroup.googoltoone.activity.NextActivity;
+import com.noveogroup.googoltoone.fragment.QueryFragment;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -20,23 +21,25 @@ import java.util.ArrayList;
 public class GoogleSuggestion extends AsyncTask<String, Void , ArrayList<String>> {
 
     private static final String GOOGLEAPIURL = "http://suggestqueries.google.com/complete/search?client=toolbar&q=";
-    private final NextActivity activity;
+    private final TextView suggestions;
+    private final EditText query;
+    private static final int numberOfSuggestions = 5;
 
-    public GoogleSuggestion(NextActivity activity) {
-        this.activity = activity;
+    public GoogleSuggestion(QueryFragment fragment) {
+        this.suggestions = (TextView) fragment.getView().findViewById(R.id.results);
+        this.query = (EditText) fragment.getView().findViewById(R.id.query);
     }
 
     @Override
     protected ArrayList<String> doInBackground(String... query) {
 
-        if(query[0].equals("")) {
-            ArrayList<String> result = new ArrayList<String>(1);
-            result.add("");
-            return result;
+        if(getXML(getURL(query[0])) == null) {
+            return null;
         }
         else {
             return getXML(getURL(query[0]));
         }
+
     }
 
     private static String getURL(String query) {
@@ -55,10 +58,13 @@ public class GoogleSuggestion extends AsyncTask<String, Void , ArrayList<String>
             URLConnection connection = url.openConnection();
             Document doc = parseXML(connection.getInputStream());
             NodeList suggestions = doc.getElementsByTagName("suggestion");
-            for (int i = 0; i < suggestions.getLength(); i++) {
-                Element element = (Element) suggestions.item(i);
-                result.add(element.getAttribute("data"));
+            if(suggestions.getLength() >= numberOfSuggestions) {
+                for (int i = 0; i < numberOfSuggestions; i++) {
+                    Element element = (Element) suggestions.item(i);
+                    result.add(element.getAttribute("data"));
+                }
             }
+            else return null;
         }
         catch (Exception e){
             return null;
@@ -83,10 +89,19 @@ public class GoogleSuggestion extends AsyncTask<String, Void , ArrayList<String>
 
     @Override
     protected void onPostExecute(ArrayList<String> arrayList) {
-        TextView results = (TextView) activity.findViewById(R.id.results);
-        results.setText("");
+
+        if (query.getText().toString().equals("")) {
+            suggestions.setText(R.string.query_empty);
+        }
+        else if(arrayList != null) {
+            suggestions.setText("");
             for (String suggestion : arrayList) {
-                results.append(suggestion + "\n");
+                suggestions.append(suggestion + "\n");
             }
+        }
+        else {
+            suggestions.setText(R.string.query_invalid);
+        }
     }
+
 }

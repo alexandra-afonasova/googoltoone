@@ -1,53 +1,35 @@
 package com.noveogroup.googoltoone.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import android.widget.TextView;
+import android.support.v4.app.FragmentActivity;
 import com.noveogroup.googoltoone.R;
-import com.noveogroup.googoltoone.googleAPI.GoogleSuggestion;
+import com.noveogroup.googoltoone.fragment.QueryFragment;
 
-public class NextActivity extends android.app.Activity {
+public class NextActivity extends FragmentActivity {
+
+    public boolean ifFirst = true;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         //Testing. Remove this Activity when no more needed
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.next);
+        setContentView(R.layout.next_with_fragment);
 
-        TextView text1 = (TextView) findViewById(R.id.text1);
-        TextView text2 = (TextView) findViewById(R.id.text2);
-        final EditText query = (EditText) findViewById(R.id.query);
-        Intent intent = getIntent();
+        if(savedInstanceState != null) {
+            return;
+        }
 
-        String player1 = intent.getStringExtra(GameStartActivity.player1Tag);
-        String player2 = intent.getStringExtra(GameStartActivity.player2Tag);
+        QueryFragment queryFragment = new QueryFragment();
 
-        text1.setText(player1);
-        text2.setText(player2);
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.fragment_container, queryFragment).commit();
 
-        query.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+      }
 
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                EditText query = (EditText) NextActivity.this.findViewById(R.id.query);
-                if(query.getText() != null) {
-                    new GoogleSuggestion(NextActivity.this).execute(query.getText().toString());
-                }
-            }
-        });
+    public void Fuction() {
 
     }
+
 }

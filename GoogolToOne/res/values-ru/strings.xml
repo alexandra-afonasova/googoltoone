@@ -17,6 +17,11 @@
     <string name="names_text">Введите имена игроков</string>
     <string name="start_button">Начать</string>
 
+    <string name="guess_button">Пусть угадывает</string>
+    <string name="query_text">Введите запрос ниже</string>
+    <string name="query_empty">Начните вводить запрос, и вы увидите здесь самые популярные предложения от Google</string>
+    <string name="query_invalid">Google не может понять ваш запрос. Попробуйте еще раз!</string>
+
     <!-- Strings for Answer typing layout -->
     <string name="beginning_request_ans_typ">Начало запроса:</string>
     <string name="your_answer_ans_typ">Ваш ответ:</string>
