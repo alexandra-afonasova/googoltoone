@@ -15,6 +15,8 @@
 
     <string name="names_text">What do they call you?</string>
     <string name="start_button">Start</string>
+    <string name="player1">Player 1</string>
+    <string name="player2">Player 2</string>
 
     <string name="guess_button">Let him quess</string>
     <string name="query_text">Print in your query below</string>
