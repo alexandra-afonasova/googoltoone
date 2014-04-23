@@ -4,10 +4,10 @@
           android:versionCode="1"
           android:versionName="1.0">
     <uses-sdk android:minSdkVersion="8"/>
-
-    <!--CRDONE use the same screenOrientation property for all activities-->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <application android:label="@string/app_name" android:icon="@drawable/ic_launcher">
-        <activity android:name="StartupActivity"
+        <activity android:name=".activity.StartupActivity"
                   android:label="@string/app_name"
                   android:screenOrientation="portrait">
             <intent-filter>
@@ -15,21 +15,21 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".RulesActivity"
+        <activity android:name=".activity.RulesActivity"
                   android:screenOrientation="portrait"/>
-        <activity android:name=".GameStartActivity"
+        <activity android:name=".activity.GameStartActivity"
                   android:screenOrientation="portrait"/>
-        <activity android:name=".NextActivity"
+        <activity android:name=".activity.NextActivity"
                   android:screenOrientation="portrait"/>
-        <activity android:name=".EnterQueryActivity"
+        <activity android:name=".activity.EnterQueryActivity"
                   android:screenOrientation="portrait"/>
-        <activity android:name=".AnswerTyping"
+        <activity android:name=".activity.AnswerTyping"
                   android:screenOrientation="portrait"/>
-        <activity android:name=".RoundResultActivity"
+        <activity android:name=".activity.RoundResultActivity"
                   android:screenOrientation="portrait"/>
-        <activity android:name=".EndGameActivity"
+        <activity android:name=".activity.EndGameActivity"
                   android:screenOrientation="portrait"/>
-        <activity android:name=".BestScoresActivity"
+        <activity android:name=".activity.BestScoresActivity"
                   android:screenOrientation="portrait"/>
     </application>
 </manifest>

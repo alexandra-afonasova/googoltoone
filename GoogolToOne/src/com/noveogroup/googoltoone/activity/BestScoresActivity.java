@@ -1,4 +1,4 @@
-package com.noveogroup.googoltoone;
+package com.noveogroup.googoltoone.activity;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -9,10 +9,11 @@ import android.content.CursorLoader;
 import android.content.Loader;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.text.TextUtils;
+
 import android.view.View;
 import android.widget.*;
 import com.noveogroup.googoltoone.database.ContentDescriptor;
+import com.noveogroup.googoltoone.R;
 
 // TODO: implement without support library yet
 @SuppressLint("NewApi")

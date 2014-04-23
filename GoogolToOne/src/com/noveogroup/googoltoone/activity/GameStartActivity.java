@@ -1,15 +1,15 @@
-package com.noveogroup.googoltoone;
+package com.noveogroup.googoltoone.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import com.noveogroup.googoltoone.R;
 
-public class GameStartActivity extends Activity {
+public class GameStartActivity extends android.app.Activity {
 
-    //CR Move tags to NextActivity
+    //CR Move tags to Activity
     //Extras tags
     public static final String player1Tag = "player1";
     public static final String player2Tag = "player2";
