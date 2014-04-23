@@ -27,9 +27,7 @@ public class BestScoresActivity extends Activity implements LoaderManager.Loader
         setContentView(R.layout.best_scores);
 
         ListView listView = (ListView) findViewById(R.id.list);
-        //oneItemEditText = (EditText) findViewById(R.id.item);
 
-        //? зачем?
         LoaderManager loaderManager = getLoaderManager();
 
         // only for testing
@@ -44,33 +42,25 @@ public class BestScoresActivity extends Activity implements LoaderManager.Loader
         String[] colomns = new String[]{ContentDescriptor.Players.Cols.NAME};
         int[] toFields = new int[]{R.id.item};
 
-        //? зачем?
         adapter = new SimpleCursorAdapter(this, R.layout.best_scores_list_item, null, colomns, toFields, 0);
         listView.setAdapter(adapter);
 
-        //? зачем?
         loaderManager.initLoader(0, null, this);
     }
 
     private void insertData() {
-        //if (!TextUtils.isEmpty(oneItemEditText.getText())) {
-            ContentValues values = new ContentValues();
-            values.put(ContentDescriptor.Players.Cols.NAME, "Vasa");
+        ContentValues values = new ContentValues();
+        values.put(ContentDescriptor.Players.Cols.NAME, "Petya");
 
-            new AsyncQueryHandler(getContentResolver()) {
-            }.startInsert(1, null, ContentDescriptor.Players.TABLE_URI, values);
-        //}else {
-        //    Toast.makeText(this, "Fields can't be empty", Toast.LENGTH_LONG).show();
-        //}
+        new AsyncQueryHandler(getContentResolver()) {
+        }.startInsert(1, null, ContentDescriptor.Players.TABLE_URI, values);
     }
 
-    //? зачем?
     @Override
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
         return new CursorLoader(BestScoresActivity.this, ContentDescriptor.Players.TABLE_URI, null, null, null, null);
     }
 
-    //? зачем?
     @Override
     public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
         if (adapter != null && cursor != null) {
