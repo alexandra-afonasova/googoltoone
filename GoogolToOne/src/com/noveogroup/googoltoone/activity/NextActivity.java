@@ -22,7 +22,6 @@ public class NextActivity extends FragmentActivity implements ScoreUpdater {
     private String playerTwoName;
 
     private TextView scoreTextView;
-    public boolean ifFirst = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +37,7 @@ public class NextActivity extends FragmentActivity implements ScoreUpdater {
         playerTwoName = intent.getStringExtra(player2Tag);
 
         gameInfo = new GameInfo(playerOneName, playerTwoName);
-        updateScore(0, 0);
+        updateScore();
 
         if(savedInstanceState != null) {
             return;
@@ -55,12 +54,10 @@ public class NextActivity extends FragmentActivity implements ScoreUpdater {
         return gameInfo;
     }
 
-    public void Fuction() {
-
-    }
-
     @Override
-    public void updateScore(int playerOneScore, int playerTwoScore) {
-        scoreTextView.setText( getString(R.string.score_fmt, playerOneScore, playerTwoScore, playerOneName, playerTwoName) );
+    public void updateScore() {
+        scoreTextView.setText( getString(R.string.score_fmt,
+                gameInfo.getCurrentScoreOnePlayer(), gameInfo.getCurrentScoreTwoPlayer(),
+                playerOneName, playerTwoName) );
     }
 }

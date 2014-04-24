@@ -1,11 +1,13 @@
 package com.noveogroup.googoltoone.fragment;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.noveogroup.googoltoone.R;
@@ -13,7 +15,10 @@ import com.noveogroup.googoltoone.activity.NextActivity;
 import com.noveogroup.googoltoone.gamelogic.RoundInfo;
 
 public class AnswerTypingFragment extends Fragment {
-    private TextView answerTV;
+    private NextActivity parentActivity;
+
+    private TextView beginRequestTV;
+    private EditText answerET;
     private Button checkBtn;
 
     private RoundInfo roundInfo;
@@ -22,9 +27,13 @@ public class AnswerTypingFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.answer_typing, container, false);
 
-        roundInfo = ((NextActivity) getActivity()).getGameInfo().getCurrentRound();
+        parentActivity = (NextActivity) getActivity();
+        roundInfo = parentActivity.getGameInfo().getCurrentRound();
 
-        answerTV = (TextView) view.findViewById(R.id.answer);
+        beginRequestTV = (TextView) view.findViewById(R.id.begin_request);
+        answerET = (EditText) view.findViewById(R.id.answer);
+
+        beginRequestTV.setText( beginRequestTV.getText() + "\n" + roundInfo.getBeginRequest() );
 
         checkBtn = (Button) view.findViewById(R.id.checkButton);
         checkBtn.setOnClickListener(new View.OnClickListener() {
@@ -39,7 +48,7 @@ public class AnswerTypingFragment extends Fragment {
 
     private void onCheckBtnClick() {
         // check input with set of correct answer
-        String answerStr = answerTV.getText().toString();
+        String answerStr = answerET.getText().toString();
 
         // if correct guessed
         if( roundInfo.checkAnswer(answerStr) ){
@@ -48,10 +57,13 @@ public class AnswerTypingFragment extends Fragment {
             Toast.makeText( getActivity(), "Try again!", Toast.LENGTH_SHORT).show();
         }
 
-        //TODO: if round end then switch fragment
+        parentActivity.updateScore();
 
-        // switch next to round end
-        /*Fragment roundResult = new RoundResultFragment();
-        getFragmentManager().beginTransaction().replace(R.id.fragment_container, roundResult).commit();*/
+        // if round end then switch fragment
+        if( roundInfo.reduceAffort() ){
+            // switch next to round end
+            Fragment roundResult = new RoundResultFragment();
+            getFragmentManager().beginTransaction().replace(R.id.fragment_container, roundResult).commit();
+        }
     }
 }

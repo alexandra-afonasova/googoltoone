@@ -17,6 +17,8 @@ import com.noveogroup.googoltoone.googleAPI.GoogleSuggestion;
 public class QueryFragment extends Fragment {
     private RoundInfo roundInfo;
 
+    private EditText query;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.enter_query, container,false);
@@ -26,7 +28,7 @@ public class QueryFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
-        EditText query = (EditText) getView().findViewById(R.id.query);
+        query = (EditText) getView().findViewById(R.id.query);
         Button continueButton = (Button) getView().findViewById(R.id.continue_button);
 
         roundInfo = new RoundInfo();
@@ -49,7 +51,9 @@ public class QueryFragment extends Fragment {
         continueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //replace this fragment with the next one
+                roundInfo.setBeginRequest( query.getText().toString() );
+
+                //replace this fragment with the answer fragment
                 Fragment answerTyping = new AnswerTypingFragment();
 
                 getFragmentManager().beginTransaction()

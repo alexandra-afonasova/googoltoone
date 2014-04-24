@@ -5,19 +5,29 @@ import java.util.List;
 import java.util.Vector;
 
 public class RoundInfo {
-    private static Vector<String> googleAnswers;
-    private Vector<Integer> indexGuessedAnswers;
+    public static final int MAX_NUMBER_ATTEMPTS = 3;
+    private static final int MAX_NUMBER_ANSWER = 5;
+    private static final int MULTIPLY_FACTOR = 10;
 
-    private int roundPoints;
+    private String beginRequest;
+    private Vector<String> googleAnswers;
+    private Vector<Integer> indexGuessedAnswers;
+    private int roundScoreAnswerer;
+    private int roundScoreQuerier;
+
+    private int numberAttempts;
 
     public RoundInfo() {
         this.googleAnswers = new Vector<String>();
-        this.roundPoints = 0;
+        beginRequest = "";
+        roundScoreAnswerer = 0;
+        roundScoreQuerier = 0;
         this.indexGuessedAnswers = new Vector<Integer>();
+        this.numberAttempts = MAX_NUMBER_ATTEMPTS;
     }
 
-    public static void setGoogleAnswers(Vector<String> googleAnswers) {
-        RoundInfo.googleAnswers = googleAnswers;
+    public void setGoogleAnswers(Vector<String> googleAnswers) {
+        this.googleAnswers = googleAnswers;
     }
 
     public boolean checkAnswer( String answer ){
@@ -25,14 +35,32 @@ public class RoundInfo {
             return false;
         }
 
+        // TODO: check repeat
+
         indexGuessedAnswers.add(googleAnswers.indexOf(answer));
         // TODO: create rules
-        roundPoints = roundPoints * 10 + (5 - indexGuessedAnswers.lastElement());
+        roundScoreAnswerer = roundScoreAnswerer * MULTIPLY_FACTOR + (MAX_NUMBER_ANSWER - indexGuessedAnswers.lastElement());
 
         return true;
     }
 
-    public int getRoundPoints() {
-        return roundPoints;
+    public int getRoundScoreQuerier() {
+        return roundScoreQuerier;
+    }
+
+    public int getRoundScoreAnswerer() {
+        return roundScoreAnswerer;
+    }
+
+    public boolean reduceAffort() {
+        return (--numberAttempts == 0);
+    }
+
+    public String getBeginRequest() {
+        return beginRequest;
+    }
+
+    public void setBeginRequest(String beginRequest) {
+        this.beginRequest = beginRequest;
     }
 }

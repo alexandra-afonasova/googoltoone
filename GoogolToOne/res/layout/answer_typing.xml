@@ -36,7 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="@dimen/edit_text_padding_top"
-            android:text="@string/default_answer_ans_typ"
+            android:hint="@string/default_answer_ans_typ"
             android:inputType="text"/>
 
     <Button
