@@ -23,6 +23,9 @@
     <string name="query_empty">Start writing your query and you will see the most popular suggestions from Google</string>
     <string name="query_invalid">Your query doesn\'t make sense to Google. Please, try again</string>
 
+    <!-- String for Score Text View -->
+    <string name="score_fmt">%3$s - %4$s\n %1$s : %2$s</string>
+
     <!-- Strings for Answer typing layout -->
     <string name="beginning_request_ans_typ">Beginning request:</string>
     <string name="your_answer_ans_typ">Your answer:</string>
