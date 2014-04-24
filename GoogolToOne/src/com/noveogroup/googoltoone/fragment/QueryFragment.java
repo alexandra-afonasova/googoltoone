@@ -10,14 +10,16 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import com.noveogroup.googoltoone.R;
+import com.noveogroup.googoltoone.activity.NextActivity;
+import com.noveogroup.googoltoone.gamelogic.RoundInfo;
 import com.noveogroup.googoltoone.googleAPI.GoogleSuggestion;
 
 public class QueryFragment extends Fragment {
+    private RoundInfo roundInfo;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         return inflater.inflate(R.layout.enter_query, container,false);
-
     }
 
     @Override
@@ -26,6 +28,10 @@ public class QueryFragment extends Fragment {
 
         EditText query = (EditText) getView().findViewById(R.id.query);
         Button continueButton = (Button) getView().findViewById(R.id.continue_button);
+
+        roundInfo = new RoundInfo();
+        // TODO: what is correct way?
+        ((NextActivity)getActivity()).getGameInfo().setCurrentRound( roundInfo );
 
         query.addTextChangedListener(new TextWatcher() {
             @Override
@@ -36,7 +42,7 @@ public class QueryFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                new GoogleSuggestion(QueryFragment.this).execute(s.toString());
+                new GoogleSuggestion(QueryFragment.this, roundInfo).execute(s.toString());
             }
         });
 

@@ -7,8 +7,11 @@ import android.widget.TextView;
 import com.noveogroup.googoltoone.R;
 import com.noveogroup.googoltoone.ScoreUpdater;
 import com.noveogroup.googoltoone.fragment.QueryFragment;
+import com.noveogroup.googoltoone.gamelogic.GameInfo;
 
 public class NextActivity extends FragmentActivity implements ScoreUpdater {
+
+    private GameInfo gameInfo;
 
     //CR Move tags to Activity
     //Extras tags
@@ -34,6 +37,7 @@ public class NextActivity extends FragmentActivity implements ScoreUpdater {
         playerOneName = intent.getStringExtra(player1Tag);
         playerTwoName = intent.getStringExtra(player2Tag);
 
+        gameInfo = new GameInfo(playerOneName, playerTwoName);
         updateScore(0, 0);
 
         if(savedInstanceState != null) {
@@ -46,6 +50,10 @@ public class NextActivity extends FragmentActivity implements ScoreUpdater {
                 .add(R.id.fragment_container, queryFragment).commit();
 
       }
+
+    public GameInfo getGameInfo() {
+        return gameInfo;
+    }
 
     public void Fuction() {
 

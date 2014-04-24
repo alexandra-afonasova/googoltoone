@@ -5,6 +5,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import com.noveogroup.googoltoone.R;
 import com.noveogroup.googoltoone.fragment.QueryFragment;
+import com.noveogroup.googoltoone.gamelogic.RoundInfo;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -17,6 +18,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.Vector;
 
 public class GoogleSuggestion extends AsyncTask<String, Void , ArrayList<String>> {
 
@@ -25,14 +27,18 @@ public class GoogleSuggestion extends AsyncTask<String, Void , ArrayList<String>
     private final EditText query;
     private static final int numberOfSuggestions = 5;
 
-    public GoogleSuggestion(QueryFragment fragment) {
+    private RoundInfo roundInfo;
+
+    public GoogleSuggestion(QueryFragment fragment, RoundInfo roundInfo) {
         this.suggestions = (TextView) fragment.getView().findViewById(R.id.results);
         this.query = (EditText) fragment.getView().findViewById(R.id.query);
+
+        this.roundInfo = roundInfo;
     }
 
     @Override
     protected ArrayList<String> doInBackground(String... query) {
-
+        // CRTOL: not equal "return getXML(getURL(query[0]))" ?
         if(getXML(getURL(query[0])) == null) {
             return null;
         }
@@ -92,8 +98,11 @@ public class GoogleSuggestion extends AsyncTask<String, Void , ArrayList<String>
 
         if (query.getText().toString().equals("")) {
             suggestions.setText(R.string.query_empty);
+            roundInfo.setGoogleAnswers( null );
         }
         else if(arrayList != null) {
+            roundInfo.setGoogleAnswers( new Vector<String>( arrayList ) );
+
             suggestions.setText("");
             for (String suggestion : arrayList) {
                 suggestions.append(suggestion + "\n");
@@ -101,6 +110,7 @@ public class GoogleSuggestion extends AsyncTask<String, Void , ArrayList<String>
         }
         else {
             suggestions.setText(R.string.query_invalid);
+            roundInfo.setGoogleAnswers( null );
         }
     }
 
