@@ -43,10 +43,11 @@ public class QueryFragment extends Fragment {
         continueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            //replace this fragment with the next one
+                //replace this fragment with the next one
+                Fragment answerTyping = new AnswerTypingFragment();
 
                 getFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_container, new TestFragment(), null)
+                        .replace(R.id.fragment_container, answerTyping)
                         .commit();
             }
         });
