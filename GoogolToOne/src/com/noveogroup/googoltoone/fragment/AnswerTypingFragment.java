@@ -53,8 +53,8 @@ public class AnswerTypingFragment extends Fragment {
         String answerStr = answerET.getText().toString();
 
         // if correct guessed
-        if( roundInfo.checkAnswer(answerStr) ){
-            Toast.makeText( getActivity(), "Correct!", Toast.LENGTH_SHORT).show();
+        if( roundInfo.checkAnswer( roundInfo.getBeginRequest() + answerStr) ){
+            Toast.makeText( getActivity(), "Correct! You earn " + roundInfo.getLastAddScore(), Toast.LENGTH_SHORT).show();
         } else{
             Toast.makeText( getActivity(), "Try again!", Toast.LENGTH_SHORT).show();
         }
