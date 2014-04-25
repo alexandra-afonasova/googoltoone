@@ -6,10 +6,12 @@
 
     <dimen name="activity_global_padding">10dip</dimen>
     <dimen name="text_size">20sp</dimen>
+    <dimen name="request_text_size">30sp</dimen>
     <dimen name="button_width">200dip</dimen>
     <dimen name="button_height">50dip</dimen>
     <dimen name="button_margin_top">20dip</dimen>
     <dimen name="edit_text_padding_top">10dip</dimen>
     <dimen name="text_view_padding">15dip</dimen>
+    <dimen name="button_margin_bottom">10dip</dimen>
 
 </resources>

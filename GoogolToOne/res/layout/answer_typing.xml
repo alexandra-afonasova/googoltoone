@@ -14,13 +14,18 @@
               android:paddingTop="@dimen/activity_vertical_margin">
 
     <TextView
-            android:id="@+id/begin_request"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/beginning_request_ans_typ"
             android:gravity="center_horizontal"
-            android:textSize="@dimen/text_size"
-            android:padding="@dimen/text_view_padding"/>
+            android:textSize="@dimen/text_size"/>
+
+    <TextView
+            android:id="@+id/begin_request"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textSize="@dimen/request_text_size"/>
 
     <TextView
             android:layout_width="match_parent"
@@ -36,11 +41,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="@dimen/edit_text_padding_top"
-            android:text="@string/default_answer_ans_typ"
+            android:hint="@string/default_answer_ans_typ"
             android:inputType="text"/>
 
     <Button
-            android:id="@+id/startButton"
+            android:id="@+id/checkButton"
             android:layout_width="@dimen/button_width"
             android:layout_height="@dimen/button_height"
             android:layout_gravity="center_horizontal"

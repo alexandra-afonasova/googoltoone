@@ -2,52 +2,62 @@ package com.noveogroup.googoltoone.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
+import android.support.v4.app.FragmentActivity;
 import android.widget.TextView;
 import com.noveogroup.googoltoone.R;
-import com.noveogroup.googoltoone.googleAPI.GoogleSuggestion;
+import com.noveogroup.googoltoone.ScoreUpdater;
+import com.noveogroup.googoltoone.fragment.QueryFragment;
+import com.noveogroup.googoltoone.gamelogic.GameInfo;
 
-public class NextActivity extends android.app.Activity {
+public class NextActivity extends FragmentActivity implements ScoreUpdater {
+
+    private GameInfo gameInfo;
+
+    //CR Move tags to Activity
+    //Extras tags
+    public static final String player1Tag = "player1";
+    public static final String player2Tag = "player2";
+
+    private String playerOneName;
+    private String playerTwoName;
+
+    private TextView scoreTextView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         //Testing. Remove this Activity when no more needed
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.next);
+        setContentView(R.layout.next_with_fragment);
 
-        TextView text1 = (TextView) findViewById(R.id.text1);
-        TextView text2 = (TextView) findViewById(R.id.text2);
-        final EditText query = (EditText) findViewById(R.id.query);
+        scoreTextView = (TextView) findViewById(R.id.score);
         Intent intent = getIntent();
+        playerOneName = intent.getStringExtra(player1Tag);
+        playerTwoName = intent.getStringExtra(player2Tag);
 
-        String player1 = intent.getStringExtra(GameStartActivity.player1Tag);
-        String player2 = intent.getStringExtra(GameStartActivity.player2Tag);
+        gameInfo = new GameInfo(playerOneName, playerTwoName);
+        updateScore();
 
-        text1.setText(player1);
-        text2.setText(player2);
+        if(savedInstanceState != null) {
+            return;
+        }
 
-        query.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        QueryFragment queryFragment = new QueryFragment();
 
-            }
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.fragment_container, queryFragment).commit();
 
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
+      }
 
-            }
+    public GameInfo getGameInfo() {
+        return gameInfo;
+    }
 
-            @Override
-            public void afterTextChanged(Editable s) {
-                EditText query = (EditText) NextActivity.this.findViewById(R.id.query);
-                if(query.getText() != null) {
-                    new GoogleSuggestion(NextActivity.this).execute(query.getText().toString());
-                }
-            }
-        });
-
+    @Override
+    public void updateScore() {
+        scoreTextView.setText( getString(R.string.score_fmt,
+                gameInfo.getCurrentScoreOnePlayer(), gameInfo.getCurrentScoreTwoPlayer(),
+                playerOneName, playerTwoName) );
     }
 }
