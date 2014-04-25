@@ -6,6 +6,10 @@ public class Game {
     private int id;
     private Player player1;
     private Player player2;
+
+    private int scorePlayer1;
+    private int scorePlayer2;
+
     private Date time;
 
     public Game(Player player1, Player player2, Date time) {

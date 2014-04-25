@@ -26,8 +26,6 @@
                   android:screenOrientation="portrait"/>
         <activity android:name=".activity.EnterQueryActivity"
                   android:screenOrientation="portrait"/>
-        <activity android:name=".fragment.EndGameActivity"
-                  android:screenOrientation="portrait"/>
         <activity android:name=".activity.BestScoresActivity"
                   android:screenOrientation="portrait"/>
         <provider

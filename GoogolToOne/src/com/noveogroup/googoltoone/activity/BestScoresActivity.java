@@ -53,6 +53,7 @@ public class BestScoresActivity extends Activity implements LoaderManager.Loader
         values.put(ContentDescriptor.Players.Cols.NAME, "Petya");
 
         new AsyncQueryHandler(getContentResolver()) {
+            // TODO: 1 - ?
         }.startInsert(1, null, ContentDescriptor.Players.TABLE_URI, values);
     }
 

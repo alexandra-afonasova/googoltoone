@@ -26,6 +26,9 @@ public class EndGameFragment extends Fragment {
 
         parentActivity = (NextActivity) getActivity();
 
+        // TODO: add to db
+
+
         againBtn = (Button) view.findViewById(R.id.againBtn);
         againBtn.setOnClickListener(new View.OnClickListener() {
             @Override

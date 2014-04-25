@@ -1,6 +1,7 @@
 package com.noveogroup.googoltoone.database;
 
 import android.content.ContentProvider;
+import android.content.ContentUris;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -24,6 +25,8 @@ public class GTOContentProvider extends ContentProvider {
         String tableName = ContentDescriptor.getTableName(uriType);
 
         SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+        //TODO: here we can read one row in table
         Cursor cursor = null;
         if (db != null) {
             cursor = db.query(tableName, projection, selection, selectionArgs, null, null, orderBy);
@@ -40,6 +43,7 @@ public class GTOContentProvider extends ContentProvider {
         return null;
     }
 
+    // TODO: make for Games
     @Override
     public Uri insert(Uri uri, ContentValues contentValues) {
         int uriType = ContentDescriptor.uriMatcher.match(uri);
@@ -51,9 +55,12 @@ public class GTOContentProvider extends ContentProvider {
             id = db.insertWithOnConflict(tableName, null, contentValues, SQLiteDatabase.CONFLICT_IGNORE);
         }
 
+        // TODO: notify only new id
         getContext().getContentResolver().notifyChange(uri, null);
 
         if (TextUtils.equals(tableName, ContentDescriptor.Players.TABLE_NAME)) {
+            // TODO: talk to Roman and replace to:
+            //ContentUris.withAppendedId(ContentDescriptor.Players.TABLE_URI, id);
             return Uri.parse(ContentDescriptor.Players.TABLE_URI + "/" + id);
         }else {
             return null;
@@ -66,6 +73,7 @@ public class GTOContentProvider extends ContentProvider {
         String tableName = ContentDescriptor.getTableName(uriType);
 
         SQLiteDatabase db = dbHelper.getWritableDatabase();
+        // TODO: if we want delete only one row, we can't, only all rows
         int result = 0;
         if (db != null) {
             result = db.delete(tableName, selection, selectionArgs);
@@ -81,6 +89,7 @@ public class GTOContentProvider extends ContentProvider {
         String tableName = ContentDescriptor.getTableName(uriType);
 
         SQLiteDatabase db = dbHelper.getWritableDatabase();
+        // TODO: if we want update only one row, we can't, only all rows
         int result = 0;
         try {
             if (db != null) {
