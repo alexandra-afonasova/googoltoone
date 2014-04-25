@@ -15,6 +15,8 @@ import com.noveogroup.googoltoone.activity.NextActivity;
 import com.noveogroup.googoltoone.gamelogic.RoundInfo;
 
 public class AnswerTypingFragment extends Fragment {
+    private static final String THREE_DOTS = "...";
+
     private NextActivity parentActivity;
 
     private TextView beginRequestTV;
@@ -33,7 +35,7 @@ public class AnswerTypingFragment extends Fragment {
         beginRequestTV = (TextView) view.findViewById(R.id.begin_request);
         answerET = (EditText) view.findViewById(R.id.answer);
 
-        beginRequestTV.setText( beginRequestTV.getText() + "\n" + roundInfo.getBeginRequest() );
+        beginRequestTV.setText( roundInfo.getBeginRequest() + THREE_DOTS );
 
         checkBtn = (Button) view.findViewById(R.id.checkButton);
         checkBtn.setOnClickListener(new View.OnClickListener() {
