@@ -1,7 +1,7 @@
 package com.noveogroup.googoltoone.gamelogic;
 
 public class GameInfo {
-    public static final int NUMBER_ROUNDS = 4;
+    public static final int NUMBER_ROUNDS = 1;
 
     private String playerOneName;
     private String playerTwoName;
@@ -39,6 +39,14 @@ public class GameInfo {
                 this.currentRound.getRoundScoreAnswerer();
 
         this.currentRound = currentRound;
+    }
+
+    public String getPlayerOneName() {
+        return playerOneName;
+    }
+
+    public String getPlayerTwoName() {
+        return playerTwoName;
     }
 
     public RoundInfo getCurrentRound() {

@@ -30,15 +30,6 @@ public class BestScoresActivity extends Activity implements LoaderManager.Loader
 
         LoaderManager loaderManager = getLoaderManager();
 
-        // only for testing
-        Button insert = (Button) findViewById(R.id.insert);
-        insert.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                insertData();
-            }
-        });
-
         String[] colomns = new String[]{ContentDescriptor.Players.Cols.NAME};
         int[] toFields = new int[]{R.id.item};
 
@@ -53,7 +44,6 @@ public class BestScoresActivity extends Activity implements LoaderManager.Loader
         values.put(ContentDescriptor.Players.Cols.NAME, "Petya");
 
         new AsyncQueryHandler(getContentResolver()) {
-            // TODO: 1 - ?
         }.startInsert(1, null, ContentDescriptor.Players.TABLE_URI, values);
     }
 
@@ -69,7 +59,6 @@ public class BestScoresActivity extends Activity implements LoaderManager.Loader
         }
     }
 
-    //? зачем?
     @Override
     public void onLoaderReset(Loader<Cursor> cursorLoader) {
         if (adapter != null) {
