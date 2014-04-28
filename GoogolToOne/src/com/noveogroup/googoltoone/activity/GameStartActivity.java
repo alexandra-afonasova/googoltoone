@@ -9,7 +9,7 @@ import com.noveogroup.googoltoone.R;
 
 public class GameStartActivity extends android.app.Activity {
 
-    //CR Move tags to Activity
+    //CR Remove these tags and use their from NextActivity
     //Extras tags
     public static final String player1Tag = "player1";
     public static final String player2Tag = "player2";
@@ -36,8 +36,10 @@ public class GameStartActivity extends android.app.Activity {
         final EditText player2 = (EditText) findViewById(R.id.player2);
         String player1Name = player1.getText().toString();
         String player2Name = player2.getText().toString();
+
+        //CR use TextUtils.isEmpty(player1Name)
         if(player1Name.equals("")) {
-            player1Name = "Player 1";
+            player1Name = "Player 1";  //CR move strings to resources
         }
         if(player2Name.equals("")) {
             player2Name = "Player 2";

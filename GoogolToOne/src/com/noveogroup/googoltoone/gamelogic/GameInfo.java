@@ -3,6 +3,7 @@ package com.noveogroup.googoltoone.gamelogic;
 public class GameInfo {
     public static final int NUMBER_ROUNDS = 4;
 
+    //CR Remove these fields if you will not use it
     private String playerOneName;
     private String playerTwoName;
 

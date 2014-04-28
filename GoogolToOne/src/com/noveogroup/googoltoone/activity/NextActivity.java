@@ -9,11 +9,13 @@ import com.noveogroup.googoltoone.ScoreUpdater;
 import com.noveogroup.googoltoone.fragment.QueryFragment;
 import com.noveogroup.googoltoone.gamelogic.GameInfo;
 
+//CR Names of classes which extends FragmentActivity should have the postfix "FragmentActivity"
+//CR use more informative name for activity
 public class NextActivity extends FragmentActivity implements ScoreUpdater {
 
     private GameInfo gameInfo;
 
-    //CR Move tags to Activity
+    //CR Use Java Naming Standards for Constant values
     //Extras tags
     public static final String player1Tag = "player1";
     public static final String player2Tag = "player2";
@@ -39,7 +41,7 @@ public class NextActivity extends FragmentActivity implements ScoreUpdater {
         gameInfo = new GameInfo(playerOneName, playerTwoName);
         updateScore();
 
-        if(savedInstanceState != null) {
+        if (savedInstanceState != null) {
             return;
         }
 
@@ -48,7 +50,7 @@ public class NextActivity extends FragmentActivity implements ScoreUpdater {
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.fragment_container, queryFragment).commit();
 
-      }
+    }
 
     public GameInfo getGameInfo() {
         return gameInfo;
@@ -56,8 +58,8 @@ public class NextActivity extends FragmentActivity implements ScoreUpdater {
 
     @Override
     public void updateScore() {
-        scoreTextView.setText( getString(R.string.score_fmt,
+        scoreTextView.setText(getString(R.string.score_fmt,
                 gameInfo.getCurrentScoreOnePlayer(), gameInfo.getCurrentScoreTwoPlayer(),
-                playerOneName, playerTwoName) );
+                playerOneName, playerTwoName));
     }
 }

@@ -3,7 +3,8 @@
           package="com.noveogroup.googoltoone"
           android:versionCode="1"
           android:versionName="1.0">
-    <uses-sdk android:minSdkVersion="8"/>
+    <uses-sdk android:targetSdkVersion="19"
+              android:minSdkVersion="8"/>
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <application android:label="@string/app_name" android:icon="@drawable/ic_launcher">
@@ -23,6 +24,8 @@
                   android:screenOrientation="portrait"/>
         <activity android:name=".activity.EnterQueryActivity"
                   android:screenOrientation="portrait"/>
+
+        <!--CR remove this-->
         <activity android:name=".fragment.EndGameActivity"
                   android:screenOrientation="portrait"/>
         <activity android:name=".activity.BestScoresActivity"

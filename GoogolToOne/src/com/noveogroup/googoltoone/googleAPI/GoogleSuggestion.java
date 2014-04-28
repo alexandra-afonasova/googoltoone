@@ -20,11 +20,13 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Vector;
 
+//CR must have postfix "Task"
 public class GoogleSuggestion extends AsyncTask<String, Void , ArrayList<String>> {
 
     private static final String GOOGLEAPIURL = "http://suggestqueries.google.com/complete/search?client=toolbar&q=";
     private final TextView suggestions;
     private final EditText query;
+    //CR Use Java Naming Standards for Constant values
     private static final int numberOfSuggestions = 5;
 
     private RoundInfo roundInfo;
@@ -39,6 +41,7 @@ public class GoogleSuggestion extends AsyncTask<String, Void , ArrayList<String>
     @Override
     protected ArrayList<String> doInBackground(String... query) {
         // CRTOL: not equal "return getXML(getURL(query[0]))" ?
+        //CR Simplify: return getXML(getURL(query[0]))
         if(getXML(getURL(query[0])) == null) {
             return null;
         }
@@ -53,10 +56,12 @@ public class GoogleSuggestion extends AsyncTask<String, Void , ArrayList<String>
             return GOOGLEAPIURL + URLEncoder.encode(query, "UTF-8");
         }
         catch (UnsupportedEncodingException e) {
+            //CR Add logging
             return null;
         }
     }
 
+    //CR Use List<String> as return statement
     private ArrayList<String> getXML (String queryURL) {
         ArrayList<String> result = new ArrayList<String>();
         try {
@@ -73,7 +78,7 @@ public class GoogleSuggestion extends AsyncTask<String, Void , ArrayList<String>
             else return null;
         }
         catch (Exception e){
-            return null;
+            return null;     //CR Add logging
         }
         return result;
     }
@@ -96,6 +101,7 @@ public class GoogleSuggestion extends AsyncTask<String, Void , ArrayList<String>
     @Override
     protected void onPostExecute(ArrayList<String> arrayList) {
 
+        //CR Use TextUtils.isEmpty()
         if (query.getText().toString().equals("")) {
             suggestions.setText(R.string.query_empty);
             roundInfo.setGoogleAnswers( null );

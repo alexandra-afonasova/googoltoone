@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!-- CRDONE write attributes in following order: id, layout_width, layout_height, other -->
-<!-- CRDONE move all dimensions to resources -->
-<!-- CRDONE move all strings to resources -->
 <LinearLayout
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical"
-              xmlns:android="http://schemas.android.com/apk/res/android"
-              android:padding="@dimen/activity_global_padding">
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/activity_global_padding">
 
     <LinearLayout
             android:layout_width="match_parent"
@@ -31,6 +28,7 @@
                 android:hint="@string/player1"
                 android:layout_marginTop="@dimen/button_margin_top"/>
 
+        <!-- CR Add android:contentDescription="@null" or suppressWarning-->
         <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

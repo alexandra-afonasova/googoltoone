@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!-- CRDONE write attributes in following order: id, layout_width, layout_height, other -->
-<!-- CRDONE move all dimensions to resources -->
-<!-- CRDONE use match_parent instead of fill_parent-->
+<!-- CR move all dimensions to resources -->
+<!-- CR use match_parent instead of fill_parent-->
 <LinearLayout
-              android:layout_width="fill_parent"
-              android:layout_height="fill_parent"
-              android:orientation="vertical"
-              xmlns:android="http://schemas.android.com/apk/res/android"
-              android:padding="20dip">
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:padding="20dip">
 
+    <!-- CR The names of all resources shall be in lowercase using "_" as word separators, except the names of styles and themes-->
     <Button
             android:id="@+id/playButton"
             android:layout_width="@dimen/button_width"

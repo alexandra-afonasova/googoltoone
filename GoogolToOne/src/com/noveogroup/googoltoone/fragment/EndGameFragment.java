@@ -1,6 +1,5 @@
 package com.noveogroup.googoltoone.fragment;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,14 +8,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import com.noveogroup.googoltoone.R;
-import com.noveogroup.googoltoone.activity.GameStartActivity;
 import com.noveogroup.googoltoone.activity.NextActivity;
 import com.noveogroup.googoltoone.activity.StartupActivity;
-import com.noveogroup.googoltoone.gamelogic.GameInfo;
 
 public class EndGameFragment extends Fragment {
+    //CR do not store pointer to the activity. Use local variable.
     private NextActivity parentActivity;
 
+    //CR convert to local variable
     private Button againBtn;
     private Button enoughBtn;
 

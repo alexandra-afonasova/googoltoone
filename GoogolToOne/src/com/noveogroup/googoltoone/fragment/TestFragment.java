@@ -11,6 +11,7 @@ import com.noveogroup.googoltoone.R;
 /**
  * Created by Sandra on 23.04.2014.
  */
+//CR remove if unused
 public class TestFragment extends Fragment {
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

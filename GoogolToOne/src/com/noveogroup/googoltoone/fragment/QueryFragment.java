@@ -32,7 +32,7 @@ public class QueryFragment extends Fragment {
         Button continueButton = (Button) getView().findViewById(R.id.continue_button);
 
         roundInfo = new RoundInfo();
-        // TODO: what is correct way?
+        // TODO: what is correct way?  CR Try to use singleton?
         ((NextActivity)getActivity()).getGameInfo().setCurrentRound( roundInfo );
 
         query.addTextChangedListener(new TextWatcher() {
@@ -54,8 +54,9 @@ public class QueryFragment extends Fragment {
                 roundInfo.setBeginRequest( query.getText().toString() );
 
                 //replace this fragment with the answer fragment
-                Fragment answerTyping = new AnswerTypingFragment();
+                Fragment answerTyping = new AnswerTypingFragment(); //CR Create and use method newInstance()
 
+                //CR Create class FragmentUtils and create methods which do this.
                 getFragmentManager().beginTransaction()
                         .replace(R.id.fragment_container, answerTyping)
                         .commit();

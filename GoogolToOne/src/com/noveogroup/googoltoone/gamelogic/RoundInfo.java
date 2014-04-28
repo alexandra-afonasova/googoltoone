@@ -1,9 +1,5 @@
 package com.noveogroup.googoltoone.gamelogic;
 
-import android.widget.Toast;
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Vector;
 
 public class RoundInfo {
@@ -33,16 +29,17 @@ public class RoundInfo {
         this.googleAnswers = googleAnswers;
     }
 
-    public boolean checkAnswer(String answer){
-        if( ! googleAnswers.contains(answer) ){
+    //CR names of boolean methods must started by is... was... need... etc.
+    public boolean checkAnswer(String answer) {
+        if (!googleAnswers.contains(answer)) {
             return false;
         }
 
         // check repeat
         int indexOfFoundAnswer = googleAnswers.indexOf(answer);
-        if( ! indexGuessedAnswers.contains( indexOfFoundAnswer ) ){ // if same answer was not earlier
+        if (!indexGuessedAnswers.contains(indexOfFoundAnswer)) { // if same answer was not earlier
             indexGuessedAnswers.add(googleAnswers.indexOf(answer));
-            lastAddScore = (int) ((MAX_NUMBER_ANSWER - indexGuessedAnswers.lastElement()) * Math.pow(MULTIPLY_FACTOR, numberAttempts-1));
+            lastAddScore = (int) ((MAX_NUMBER_ANSWER - indexGuessedAnswers.lastElement()) * Math.pow(MULTIPLY_FACTOR, numberAttempts - 1));
         } else {
             lastAddScore = 0;
             return false;
@@ -66,6 +63,7 @@ public class RoundInfo {
         return roundScoreAnswerer;
     }
 
+    //CR Fix typo. Maybe better use one term for attempts/efforts
     public boolean reduceAffort() {
         return (--numberAttempts == 0);
     }

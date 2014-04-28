@@ -1,6 +1,5 @@
 package com.noveogroup.googoltoone.fragment;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -12,7 +11,7 @@ import com.noveogroup.googoltoone.activity.NextActivity;
 import com.noveogroup.googoltoone.gamelogic.GameInfo;
 
 public class RoundResultFragment extends Fragment {
-    private Button nextRoundBtn;
+    private Button nextRoundBtn; //CR convert to local
 
     private NextActivity parentActivity;
 
@@ -29,12 +28,12 @@ public class RoundResultFragment extends Fragment {
 
                 if( parentActivity.getGameInfo().getAndIncreaseRoundNumber() != GameInfo.NUMBER_ROUNDS ){
                     // switch to the next round
-                    Fragment newQuery = new QueryFragment();
-                    getFragmentManager().beginTransaction().replace(R.id.fragment_container, newQuery).commit();
+                    Fragment newQuery = new QueryFragment();   //CR Create and use method newInstance()
+                    getFragmentManager().beginTransaction().replace(R.id.fragment_container, newQuery).commit(); //CR Create class FragmentUtils and create methods which do this.
                 } else{
                     // switch to the end game fragment
-                    Fragment endGame = new EndGameFragment();
-                    getFragmentManager().beginTransaction().replace(R.id.fragment_container, endGame).commit();
+                    Fragment endGame = new EndGameFragment();  //CR Create and use method newInstance()
+                    getFragmentManager().beginTransaction().replace(R.id.fragment_container, endGame).commit(); //CR Create class FragmentUtils and create methods which do this.
                 }
             }
         });

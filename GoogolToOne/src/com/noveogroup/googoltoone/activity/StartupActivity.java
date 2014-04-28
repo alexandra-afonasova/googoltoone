@@ -47,15 +47,15 @@ public class StartupActivity extends Activity {
     }
 
     private void onPlayClickEvent() {
-        if(isOnline()) {
+        if (isOnline()) {
             Intent intent = new Intent(StartupActivity.this, GameStartActivity.class);
             startActivity(intent);
-        }
-        else {
+        } else {
             popDialog();
         }
     }
 
+    //CR move string to resources
     private void onHighScoresClickEvent() {
         //Placeholder
         Toast.makeText(getApplicationContext(), "Not implemented yet", Toast.LENGTH_SHORT).show();
@@ -69,12 +69,13 @@ public class StartupActivity extends Activity {
     private boolean isOnline() {
         ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo netInfo = cm.getActiveNetworkInfo();
-        if(netInfo != null && netInfo.isConnectedOrConnecting()) {
+        if (netInfo != null && netInfo.isConnectedOrConnecting()) {
             return true;
         }
         return false;
     }
 
+    //CR Use DialogFragment
     private void popDialog() {
         new AlertDialog.Builder(this)
                 .setTitle(R.string.no_connection_title)
@@ -84,7 +85,7 @@ public class StartupActivity extends Activity {
                     public void onClick(DialogInterface dialog, int which) {
                     }
                 })
-        .show();
-        }
+                .show();
+    }
 
 }
