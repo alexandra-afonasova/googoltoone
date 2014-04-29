@@ -32,6 +32,9 @@
     <string name="default_answer_ans_typ">answer</string>
     <string name="check_ans_typ">Check!</string>
 
+    <string name="check_answer_correct_ans_typ">Correct! You earn</string>
+    <string name="check_answer_try_again_ans_typ">Try again!</string>
+
     <!-- Strings for Round result layout -->
     <string name="title_activity_ro_res">Round Result</string>
     <string name="bingo_ro_res">Bingo!</string>

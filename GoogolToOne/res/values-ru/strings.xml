@@ -28,6 +28,9 @@
     <string name="default_answer_ans_typ">ответ</string>
     <string name="check_ans_typ">Проверить!</string>
 
+    <string name="check_answer_correct_ans_typ">Верно! Вы заработали</string>
+    <string name="check_answer_try_again_ans_typ">Попробуй ещё разок!</string>
+
     <!-- Strings for Round result -->
     <string name="title_activity_ro_res">Итоги раунда</string>
     <string name="bingo_ro_res">Ура!</string>
@@ -48,4 +51,5 @@
 
     <!-- Strings for Best scores layout-->
     <string name="title_best_sc">Лучшие матчи</string>
+
 </resources>

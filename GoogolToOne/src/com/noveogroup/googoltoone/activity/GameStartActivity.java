@@ -9,7 +9,7 @@ import com.noveogroup.googoltoone.R;
 
 public class GameStartActivity extends android.app.Activity {
 
-    //CR Remove these tags and use their from NextActivity
+    //CR Remove these tags and use their from GameBackgroungFragmentActivity
     //Extras tags
     public static final String player1Tag = "player1";
     public static final String player2Tag = "player2";
@@ -31,7 +31,7 @@ public class GameStartActivity extends android.app.Activity {
     }
 
     private void startOnClickEvent() {
-        Intent intent = new Intent(GameStartActivity.this, NextActivity.class);
+        Intent intent = new Intent(GameStartActivity.this, GameBackgroungFragmentActivity.class);
         final EditText player1 = (EditText) findViewById(R.id.player1);
         final EditText player2 = (EditText) findViewById(R.id.player2);
         String player1Name = player1.getText().toString();

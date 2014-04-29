@@ -20,14 +20,11 @@
                   android:screenOrientation="portrait"/>
         <activity android:name=".activity.GameStartActivity"
                   android:screenOrientation="portrait"/>
-        <activity android:name=".activity.NextActivity"
+        <activity android:name=".activity.GameBackgroungFragmentActivity"
                   android:screenOrientation="portrait"/>
         <activity android:name=".activity.EnterQueryActivity"
                   android:screenOrientation="portrait"/>
-
-        <!--CR remove this-->
-        <activity android:name=".fragment.EndGameActivity"
-                  android:screenOrientation="portrait"/>
+        <!--CRDONE remove this-->
         <activity android:name=".activity.BestScoresActivity"
                   android:screenOrientation="portrait"/>
     </application>

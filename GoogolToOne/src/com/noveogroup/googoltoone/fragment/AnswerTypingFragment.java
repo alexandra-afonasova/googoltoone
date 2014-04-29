@@ -10,15 +10,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.noveogroup.googoltoone.R;
-import com.noveogroup.googoltoone.activity.NextActivity;
+import com.noveogroup.googoltoone.activity.GameBackgroungFragmentActivity;
 import com.noveogroup.googoltoone.gamelogic.RoundInfo;
 
 public class AnswerTypingFragment extends Fragment {
     private static final String THREE_DOTS = "...";
 
-    //CR do not store pointer to the activity. Use local variable.
-    private NextActivity parentActivity;
-
+    //CRDONE do not store pointer to the activity. Use local variable.
     private TextView beginRequestTV;
     private EditText answerET;
     private Button checkBtn;
@@ -29,7 +27,7 @@ public class AnswerTypingFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.answer_typing, container, false);
 
-        parentActivity = (NextActivity) getActivity();
+        GameBackgroungFragmentActivity parentActivity = (GameBackgroungFragmentActivity) getActivity();
         //CR Better if GameInfo were implement Parcelable and give gameInfo in arguments. Or use singleton pattern for GameInfo and RoundInf0
         roundInfo = parentActivity.getGameInfo().getCurrentRound();
 
@@ -53,21 +51,24 @@ public class AnswerTypingFragment extends Fragment {
         // check input with set of correct answer
         String answerStr = answerET.getText().toString();
 
-        //CR move strings to resources
+        //CRDONE move strings to resources
         // if correct guessed
         if( roundInfo.checkAnswer( roundInfo.getBeginRequest() + answerStr) ){
-            Toast.makeText( getActivity(), "Correct! You earn " + roundInfo.getLastAddScore(), Toast.LENGTH_SHORT).show();
+            Toast.makeText( getActivity(), getResources().getString(R.string.check_answer_correct_ans_typ) + roundInfo.getLastAddScore(), Toast.LENGTH_SHORT).show();
         } else{
-            Toast.makeText( getActivity(), "Try again!", Toast.LENGTH_SHORT).show();
+            Toast.makeText( getActivity(), getResources().getString(R.string.check_answer_try_again_ans_typ), Toast.LENGTH_SHORT).show();
         }
 
+        GameBackgroungFragmentActivity parentActivity = (GameBackgroungFragmentActivity) getActivity();
         parentActivity.updateScore();
 
         // if round end then switch fragment
         if( roundInfo.reduceAffort() ){
             // switch next to round end
             Fragment roundResult = new RoundResultFragment();
-            getFragmentManager().beginTransaction().replace(R.id.fragment_container, roundResult).commit(); //CR Create class FragmentUtils and create methods which do this.
+            //CRDONE Create class FragmentUtils and create methods which do this.
+            FragmentUtils.startFragment( roundResult, getFragmentManager() );
+            getFragmentManager().beginTransaction().replace(R.id.fragment_container, roundResult).commit();
         }
     }
 }

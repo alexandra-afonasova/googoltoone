@@ -8,33 +8,26 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import com.noveogroup.googoltoone.R;
-import com.noveogroup.googoltoone.activity.NextActivity;
+import com.noveogroup.googoltoone.activity.GameBackgroungFragmentActivity;
 import com.noveogroup.googoltoone.activity.StartupActivity;
 
 public class EndGameFragment extends Fragment {
-    //CR do not store pointer to the activity. Use local variable.
-    private NextActivity parentActivity;
-
-    //CR convert to local variable
-    private Button againBtn;
-    private Button enoughBtn;
+    //CRDONE do not store pointer to the activity. Use local variable.
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.end_game, container, false);
 
-        parentActivity = (NextActivity) getActivity();
-
-        againBtn = (Button) view.findViewById(R.id.againBtn);
+        Button againBtn = (Button) view.findViewById(R.id.again_btn);
         againBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent( getActivity(), NextActivity.class);
+                Intent intent = new Intent(getActivity(), GameBackgroungFragmentActivity.class);
                 startActivity(intent);
             }
         });
 
-        enoughBtn = (Button) view.findViewById(R.id.enoughBtn);
+        Button enoughBtn = (Button) view.findViewById(R.id.enough_btn);
         enoughBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -44,5 +37,9 @@ public class EndGameFragment extends Fragment {
         });
 
         return view;
+    }
+
+    public static Fragment newInstance() {
+        return new EndGameFragment();
     }
 }

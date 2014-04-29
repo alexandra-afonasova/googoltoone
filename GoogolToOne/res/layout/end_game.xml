@@ -37,9 +37,9 @@
             android:textSize="@dimen/text_size"
             android:padding="@dimen/activity_global_padding"/>
 
-    <!-- CR The names of all resources shall be in lowercase using "_" as word separators, except the names of styles and themes-->
+    <!-- CRDONE The names of all resources shall be in lowercase using "_" as word separators, except the names of styles and themes-->
     <Button
-            android:id="@+id/againBtn"
+            android:id="@+id/again_btn"
             android:layout_width="@dimen/button_width"
             android:layout_height="@dimen/button_height"
             android:layout_gravity="center_horizontal"
@@ -47,7 +47,7 @@
             android:text="@string/btn_again_end_game"/>
 
     <Button
-            android:id="@+id/enoughBtn"
+            android:id="@+id/enough_btn"
             android:layout_width="@dimen/button_width"
             android:layout_height="@dimen/button_height"
             android:layout_gravity="center_horizontal"
