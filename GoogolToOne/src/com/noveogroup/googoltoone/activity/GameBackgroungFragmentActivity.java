@@ -9,13 +9,11 @@ import com.noveogroup.googoltoone.ScoreUpdater;
 import com.noveogroup.googoltoone.fragment.QueryFragment;
 import com.noveogroup.googoltoone.gamelogic.GameInfo;
 
-//CRDONE Names of classes which extends FragmentActivity should have the postfix "FragmentActivity"
-//CRDONE use more informative name for activity
+//CR fix typo
 public class GameBackgroungFragmentActivity extends FragmentActivity implements ScoreUpdater {
 
     private GameInfo gameInfo;
 
-    //CRDONE Use Java Naming Standards for Constant values
     //Extras tags
     public static final String PLAYER1_TAG = "player1";
     public static final String PLAYER2_TAG = "player2";
@@ -42,8 +40,10 @@ public class GameBackgroungFragmentActivity extends FragmentActivity implements 
             return;
         }
 
+        //CR Create and use method newInstance()
         QueryFragment queryFragment = new QueryFragment();
 
+        //CR use FragmentUtils.startFragment()
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.fragment_container, queryFragment).commit();
 

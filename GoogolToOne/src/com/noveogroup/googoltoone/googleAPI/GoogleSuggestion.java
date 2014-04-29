@@ -67,7 +67,7 @@ public class GoogleSuggestion extends AsyncTask<String, Void , ArrayList<String>
         try {
             URL url = new URL(queryURL);
             URLConnection connection = url.openConnection();
-            Document doc = parseXML(connection.getInputStream());
+            Document doc = parseXML(connection.getInputStream()); //CR Close input stream in finally block
             NodeList suggestions = doc.getElementsByTagName("suggestion");
             if(suggestions.getLength() >= numberOfSuggestions) {
                 for (int i = 0; i < numberOfSuggestions; i++) {

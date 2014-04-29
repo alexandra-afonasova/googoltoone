@@ -56,7 +56,7 @@ public class QueryFragment extends Fragment {
                 //replace this fragment with the answer fragment
                 Fragment answerTyping = new AnswerTypingFragment(); //CR Create and use method newInstance()
 
-                //CR Create class FragmentUtils and create methods which do this.
+                //CR Use FragmentUtils.startFragment()
                 getFragmentManager().beginTransaction()
                         .replace(R.id.fragment_container, answerTyping)
                         .commit();

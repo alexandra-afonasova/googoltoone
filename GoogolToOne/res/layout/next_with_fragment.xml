@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!-- CRDONE move all dimensions to resources -->
-<!-- CRDONE use @android:color/black and @android:color/white instead of color code-->
-<!-- CRDONE use match_parent-->
 <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            xmlns:android="http://schemas.android.com/apk/res/android">
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
     <TextView
             android:id="@+id/score"

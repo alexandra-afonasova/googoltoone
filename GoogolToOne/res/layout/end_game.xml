@@ -37,7 +37,6 @@
             android:textSize="@dimen/text_size"
             android:padding="@dimen/activity_global_padding"/>
 
-    <!-- CRDONE The names of all resources shall be in lowercase using "_" as word separators, except the names of styles and themes-->
     <Button
             android:id="@+id/again_btn"
             android:layout_width="@dimen/button_width"

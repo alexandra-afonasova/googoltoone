@@ -24,7 +24,6 @@
                   android:screenOrientation="portrait"/>
         <activity android:name=".activity.EnterQueryActivity"
                   android:screenOrientation="portrait"/>
-        <!--CRDONE remove this-->
         <activity android:name=".activity.BestScoresActivity"
                   android:screenOrientation="portrait"/>
     </application>

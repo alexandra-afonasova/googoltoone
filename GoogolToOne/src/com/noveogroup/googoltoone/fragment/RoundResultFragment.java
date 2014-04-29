@@ -11,7 +11,6 @@ import com.noveogroup.googoltoone.activity.GameBackgroungFragmentActivity;
 import com.noveogroup.googoltoone.gamelogic.GameInfo;
 
 public class RoundResultFragment extends Fragment {
-    //CRDONE convert to local
 
     private GameBackgroungFragmentActivity parentActivity;
 
@@ -28,15 +27,11 @@ public class RoundResultFragment extends Fragment {
 
                 if (parentActivity.getGameInfo().getAndIncreaseRoundNumber() != GameInfo.NUMBER_ROUNDS) {
                     // switch to the next round
-                    //CRDONE Create and use method newInstance()
                     Fragment newQuery = QueryFragment.newInstance();
-                    //CRDONE Create class FragmentUtils and create methods which do this.
-                    FragmentUtils.startFragment( newQuery, getFragmentManager());
+                    FragmentUtils.startFragment(newQuery, getFragmentManager());
                 } else {
                     // switch to the end game fragment
-                    //CRDONE Create and use method newInstance()
                     Fragment endGame = EndGameFragment.newInstance();
-                    //CRDONE Create class FragmentUtils and create methods which do this.
                     FragmentUtils.startFragment(endGame, getFragmentManager());
                 }
             }

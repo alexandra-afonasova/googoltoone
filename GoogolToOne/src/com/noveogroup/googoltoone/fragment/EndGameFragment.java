@@ -12,7 +12,6 @@ import com.noveogroup.googoltoone.activity.GameBackgroungFragmentActivity;
 import com.noveogroup.googoltoone.activity.StartupActivity;
 
 public class EndGameFragment extends Fragment {
-    //CRDONE do not store pointer to the activity. Use local variable.
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
