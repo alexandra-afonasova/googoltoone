@@ -53,6 +53,7 @@ public class AnswerTypingFragment extends Fragment {
 
         // if correct guessed
         if( roundInfo.checkAnswer( roundInfo.getBeginRequest() + answerStr) ){
+            //CR Use string formatter. Add space before scores
             Toast.makeText( getActivity(), getResources().getString(R.string.check_answer_correct_ans_typ) + roundInfo.getLastAddScore(), Toast.LENGTH_SHORT).show();
         } else{
             Toast.makeText( getActivity(), getResources().getString(R.string.check_answer_try_again_ans_typ), Toast.LENGTH_SHORT).show();
