@@ -13,12 +13,6 @@
             android:gravity="center"
             />
 
-    <Button android:id="@+id/insert"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Добавить тестовый элемент"
-            android:gravity="center"/>
-
     <ListView
             android:id="@+id/list"
             android:layout_width="match_parent"

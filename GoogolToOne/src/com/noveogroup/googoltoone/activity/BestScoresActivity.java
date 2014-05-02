@@ -19,7 +19,6 @@ import com.noveogroup.googoltoone.R;
 @SuppressLint("NewApi")
 public class BestScoresActivity extends Activity implements LoaderManager.LoaderCallbacks<Cursor> {
     private SimpleCursorAdapter adapter;
-    EditText oneItemEditText;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -30,8 +29,20 @@ public class BestScoresActivity extends Activity implements LoaderManager.Loader
 
         LoaderManager loaderManager = getLoaderManager();
 
-        String[] colomns = new String[]{ContentDescriptor.Players.Cols.NAME};
-        int[] toFields = new int[]{R.id.item};
+        // TODO: for test
+        insertData();
+
+        // TODO: NAMEs for IDs
+        String[] colomns = new String[]{
+                ContentDescriptor.Games.Cols.ID_PLAYER1,
+                ContentDescriptor.Games.Cols.PLAYER1_SCORE,
+                ContentDescriptor.Games.Cols.PLAYER2_SCORE,
+                ContentDescriptor.Games.Cols.ID_PLAYER2};
+        int[] toFields = new int[]{
+                R.id.item_player_one_name,
+                R.id.item_player_one_score,
+                R.id.item_player_two_score,
+                R.id.item_player_two_name};
 
         adapter = new SimpleCursorAdapter(this, R.layout.best_scores_list_item, null, colomns, toFields, 0);
         listView.setAdapter(adapter);
@@ -40,11 +51,28 @@ public class BestScoresActivity extends Activity implements LoaderManager.Loader
     }
 
     private void insertData() {
-        ContentValues values = new ContentValues();
-        values.put(ContentDescriptor.Players.Cols.NAME, "Petya");
+        Cursor cursor = getContentResolver().query(ContentDescriptor.Games.TABLE_URI, null, null, null, null);
+        int count = cursor.getCount();
+        if( count > 0 ){
+            cursor.moveToLast();
+            String id = cursor.getString(0);
+            String idpl1 = cursor.getString(1);
+            String idpl2 = cursor.getString(2);
+            String scorepl1 = cursor.getString(3);
+            String scorepl2 = cursor.getString(4);
+            String time = cursor.getString(5);
+            String time2 = cursor.getString(5);
+        }
+
+
+        ContentValues cvNewGame = new ContentValues();
+        cvNewGame.put(ContentDescriptor.Games.Cols.ID_PLAYER1, 1);
+        cvNewGame.put(ContentDescriptor.Games.Cols.ID_PLAYER2, 2);
+        cvNewGame.put(ContentDescriptor.Games.Cols.PLAYER1_SCORE, 567 );
+        cvNewGame.put(ContentDescriptor.Games.Cols.PLAYER2_SCORE, 765 );
 
         new AsyncQueryHandler(getContentResolver()) {
-        }.startInsert(1, null, ContentDescriptor.Players.TABLE_URI, values);
+        }.startInsert(1, null, ContentDescriptor.Games.TABLE_URI, cvNewGame);
     }
 
     @Override

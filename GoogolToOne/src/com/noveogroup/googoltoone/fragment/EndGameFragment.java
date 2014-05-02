@@ -69,6 +69,10 @@ public class EndGameFragment extends Fragment {
             }
         }
 
+        // TODO: join with earlier queries
+        // add new Game to bd
+        insertGameToDB( gameInfo );
+
         return view;
     }
 
@@ -77,5 +81,41 @@ public class EndGameFragment extends Fragment {
         cvPlayerOne.put(ContentDescriptor.Players.Cols.NAME, name);
         new AsyncQueryHandler(getActivity().getContentResolver()) {
         }.startInsert(1, null, ContentDescriptor.Players.TABLE_URI, cvPlayerOne);
+    }
+
+    private void insertGameToDB( GameInfo gameInfo ){
+        int idPlayerOne = -1;
+        int idPlayerTwo = -1;
+
+        String selection = ContentDescriptor.Players.Cols.NAME + " = ? OR " + ContentDescriptor.Players.Cols.NAME + " = ?";
+        String[] selectionArgs = new String[]{ gameInfo.getPlayerOneName(), gameInfo.getPlayerTwoName() };
+        // TODO: how to do this async?
+        Cursor cursor = getActivity().getContentResolver().query(ContentDescriptor.Players.TABLE_URI, null, selection, selectionArgs, null);
+
+        // definition ids of players
+        if( cursor.getCount() != 2 ){
+            // TODO: this is bad
+        } else{
+            cursor.moveToFirst();
+            if( cursor.getString(1).equals( gameInfo.getPlayerOneName() ) ) {
+                idPlayerOne = Integer.parseInt(cursor.getString(0));
+                cursor.moveToNext();
+                idPlayerTwo = Integer.parseInt(cursor.getString(0));
+            } else{
+                idPlayerTwo = Integer.parseInt(cursor.getString(0));
+                cursor.moveToNext();
+                idPlayerOne = Integer.parseInt(cursor.getString(0));
+            }
+        }
+
+        // add game to bd
+        ContentValues cvNewGame = new ContentValues();
+        cvNewGame.put(ContentDescriptor.Games.Cols.ID_PLAYER1, idPlayerOne);
+        cvNewGame.put(ContentDescriptor.Games.Cols.ID_PLAYER2, idPlayerTwo);
+        cvNewGame.put(ContentDescriptor.Games.Cols.PLAYER1_SCORE, gameInfo.getCurrentScoreOnePlayer() );
+        cvNewGame.put(ContentDescriptor.Games.Cols.PLAYER2_SCORE, gameInfo.getCurrentScoreTwoPlayer() );
+
+        new AsyncQueryHandler(getActivity().getContentResolver()) {
+        }.startInsert(1, null, ContentDescriptor.Games.TABLE_URI, cvNewGame);
     }
 }

@@ -7,7 +7,19 @@
               xmlns:android="http://schemas.android.com/apk/res/android">
     
     <TextView
-            android:id="@+id/item"
+            android:id="@+id/item_player_one_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    <TextView
+            android:id="@+id/item_player_one_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    <TextView
+            android:id="@+id/item_player_two_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    <TextView
+            android:id="@+id/item_player_two_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
