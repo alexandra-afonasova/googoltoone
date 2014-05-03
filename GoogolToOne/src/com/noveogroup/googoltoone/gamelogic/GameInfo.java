@@ -3,10 +3,6 @@ package com.noveogroup.googoltoone.gamelogic;
 public class GameInfo {
     public static final int NUMBER_ROUNDS = 4;
 
-    //CR Remove these fields if you will not use it
-    private String playerOneName;
-    private String playerTwoName;
-
     private int currentScoreOnePlayer;
     private int currentScoreTwoPlayer;
 
@@ -19,9 +15,7 @@ public class GameInfo {
 
     private RoundInfo currentRound;
 
-    public GameInfo(String playerOneName, String playerTwoName) {
-        this.playerOneName = playerOneName;
-        this.playerTwoName = playerTwoName;
+    public GameInfo() {
         currentScoreOnePlayer = 0;
         currentScoreTwoPlayer = 0;
 

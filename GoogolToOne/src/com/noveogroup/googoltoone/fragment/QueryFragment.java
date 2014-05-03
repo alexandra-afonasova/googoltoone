@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import com.noveogroup.googoltoone.R;
-import com.noveogroup.googoltoone.activity.GameBackgroungFragmentActivity;
+import com.noveogroup.googoltoone.activity.GameBackgroundFragmentActivity;
 import com.noveogroup.googoltoone.gamelogic.RoundInfo;
 import com.noveogroup.googoltoone.googleAPI.GoogleSuggestion;
 
@@ -33,7 +33,7 @@ public class QueryFragment extends Fragment {
 
         roundInfo = new RoundInfo();
         // TODO: what is correct way?  CR Try to use singleton?
-        ((GameBackgroungFragmentActivity)getActivity()).getGameInfo().setCurrentRound( roundInfo );
+        ((GameBackgroundFragmentActivity)getActivity()).getGameInfo().setCurrentRound( roundInfo );
 
         query.addTextChangedListener(new TextWatcher() {
             @Override
@@ -54,12 +54,10 @@ public class QueryFragment extends Fragment {
                 roundInfo.setBeginRequest( query.getText().toString() );
 
                 //replace this fragment with the answer fragment
-                Fragment answerTyping = new AnswerTypingFragment(); //CR Create and use method newInstance()
+                Fragment answerTyping = AnswerTypingFragment.newInstance(); //CRDONE Create and use method newInstance()
 
-                //CR Use FragmentUtils.startFragment()
-                getFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_container, answerTyping)
-                        .commit();
+                //CRDONE Use FragmentUtils.startFragment()
+                FragmentUtils.startFragment( answerTyping, getFragmentManager() );
             }
         });
 

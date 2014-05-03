@@ -2,15 +2,17 @@ package com.noveogroup.googoltoone.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.widget.TextView;
 import com.noveogroup.googoltoone.R;
 import com.noveogroup.googoltoone.ScoreUpdater;
+import com.noveogroup.googoltoone.fragment.FragmentUtils;
 import com.noveogroup.googoltoone.fragment.QueryFragment;
 import com.noveogroup.googoltoone.gamelogic.GameInfo;
 
-//CR fix typo
-public class GameBackgroungFragmentActivity extends FragmentActivity implements ScoreUpdater {
+//CRDONE fix typo
+public class GameBackgroundFragmentActivity extends FragmentActivity implements ScoreUpdater {
 
     private GameInfo gameInfo;
 
@@ -33,20 +35,18 @@ public class GameBackgroungFragmentActivity extends FragmentActivity implements 
         playerOneName = intent.getStringExtra(PLAYER1_TAG);
         playerTwoName = intent.getStringExtra(PLAYER2_TAG);
 
-        gameInfo = new GameInfo(playerOneName, playerTwoName);
+        gameInfo = new GameInfo();
         updateScore();
 
         if (savedInstanceState != null) {
             return;
         }
 
-        //CR Create and use method newInstance()
-        QueryFragment queryFragment = new QueryFragment();
+        //CRDONE Create and use method newInstance()
+        Fragment queryFragment = QueryFragment.newInstance();
 
-        //CR use FragmentUtils.startFragment()
-        getSupportFragmentManager().beginTransaction()
-                .add(R.id.fragment_container, queryFragment).commit();
-
+        //CRDONE use FragmentUtils.startFragment()
+        FragmentUtils.startFragment( queryFragment, getSupportFragmentManager() );
     }
 
     public GameInfo getGameInfo() {

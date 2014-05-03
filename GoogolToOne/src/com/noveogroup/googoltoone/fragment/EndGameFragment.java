@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import com.noveogroup.googoltoone.R;
-import com.noveogroup.googoltoone.activity.GameBackgroungFragmentActivity;
+import com.noveogroup.googoltoone.activity.GameBackgroundFragmentActivity;
 import com.noveogroup.googoltoone.activity.StartupActivity;
 
 public class EndGameFragment extends Fragment {
@@ -21,7 +21,7 @@ public class EndGameFragment extends Fragment {
         againBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), GameBackgroungFragmentActivity.class);
+                Intent intent = new Intent(getActivity(), GameBackgroundFragmentActivity.class);
                 startActivity(intent);
             }
         });

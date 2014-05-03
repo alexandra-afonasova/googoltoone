@@ -20,7 +20,7 @@
                   android:screenOrientation="portrait"/>
         <activity android:name=".activity.GameStartActivity"
                   android:screenOrientation="portrait"/>
-        <activity android:name=".activity.GameBackgroungFragmentActivity"
+        <activity android:name=".activity.GameBackgroundFragmentActivity"
                   android:screenOrientation="portrait"/>
         <activity android:name=".activity.EnterQueryActivity"
                   android:screenOrientation="portrait"/>

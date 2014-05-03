@@ -28,7 +28,7 @@
     <string name="default_answer_ans_typ">ответ</string>
     <string name="check_ans_typ">Проверить!</string>
 
-    <string name="check_answer_correct_ans_typ">Верно! Вы заработали</string>
+    <string name="check_answer_correct_fmt_ans_typ">Верно! Вы заработали %d</string>
     <string name="check_answer_try_again_ans_typ">Попробуй ещё разок!</string>
 
     <!-- Strings for Round result -->

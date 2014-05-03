@@ -27,12 +27,13 @@
     <string name="score_fmt">%3$s - %4$s\n %1$s : %2$s</string>
 
     <!-- Strings for Answer typing layout -->
+    <string name="actual_beginning_request_fmt_ans_type">%s...</string>
     <string name="beginning_request_ans_typ">Beginning request:</string>
     <string name="your_answer_ans_typ">Your answer:</string>
     <string name="default_answer_ans_typ">answer</string>
     <string name="check_ans_typ">Check!</string>
 
-    <string name="check_answer_correct_ans_typ">Correct! You earn</string>
+    <string name="check_answer_correct_fmt_ans_typ">Correct! You earn %d</string>
     <string name="check_answer_try_again_ans_typ">Try again!</string>
 
     <!-- Strings for Round result layout -->

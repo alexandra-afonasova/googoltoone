@@ -29,8 +29,8 @@ public class RoundInfo {
         this.googleAnswers = googleAnswers;
     }
 
-    //CR names of boolean methods must started by is... was... need... etc.
-    public boolean checkAnswer(String answer) {
+    // CRDONE names of boolean methods must started by is... was... need... etc.
+    public boolean isCheckAnswer(String answer) {
         if (!googleAnswers.contains(answer)) {
             return false;
         }
@@ -63,8 +63,8 @@ public class RoundInfo {
         return roundScoreAnswerer;
     }
 
-    //CR Fix typo. Maybe better use one term for attempts/efforts
-    public boolean reduceAffort() {
+    //CRDONE Fix typo. Maybe better use one term for attempts/efforts
+    public boolean reduceAttempts() {
         return (--numberAttempts == 0);
     }
 

@@ -31,7 +31,7 @@ public class GameStartActivity extends android.app.Activity {
     }
 
     private void startOnClickEvent() {
-        Intent intent = new Intent(GameStartActivity.this, GameBackgroungFragmentActivity.class);
+        Intent intent = new Intent(GameStartActivity.this, GameBackgroundFragmentActivity.class);
         final EditText player1 = (EditText) findViewById(R.id.player1);
         final EditText player2 = (EditText) findViewById(R.id.player2);
         String player1Name = player1.getText().toString();
