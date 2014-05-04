@@ -35,7 +35,7 @@ public class GameBackgroundFragmentActivity extends FragmentActivity implements 
         playerOneName = intent.getStringExtra(PLAYER1_TAG);
         playerTwoName = intent.getStringExtra(PLAYER2_TAG);
 
-        gameInfo = new GameInfo();
+        gameInfo = new GameInfo( playerOneName, playerTwoName );
         updateScore();
 
         if (savedInstanceState != null) {

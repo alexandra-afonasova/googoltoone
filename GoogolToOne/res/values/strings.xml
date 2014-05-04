@@ -55,4 +55,8 @@
     <string name="btn_enough_end_game">Enough</string>
     <string name="title_best_sc">Best Scores</string>
 
+    <!-- TODO: why spaces remove? -->
+    <string name="colon"> : </string>
+    <string name="dash"> - </string>
+
 </resources>
