@@ -18,6 +18,7 @@ public class QueryFragment extends Fragment {
     private RoundInfo roundInfo;
 
     private EditText query;
+    private GoogleSuggestionTask task = null;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -45,7 +46,11 @@ public class QueryFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                new GoogleSuggestionTask(QueryFragment.this, roundInfo).execute(s.toString());
+                if (task != null) {
+                    task.cancel(true);
+                }
+                task = new GoogleSuggestionTask(QueryFragment.this, roundInfo);
+                task.execute(s.toString());
             }
         });
 

@@ -58,24 +58,24 @@ public class GoogleSuggestionTask extends AsyncTask<String, Void , List<String>>
     protected void onPostExecute(List<String> arrayList) {
 
         //CRDone Use TextUtils.isEmpty()
-        if (TextUtils.isEmpty(query.getText().toString())) {
-            suggestions.setText(R.string.query_empty);
-            gameStartButton.setEnabled(false);
-            roundInfo.setGoogleAnswers( null );
-        }
-        else if(arrayList != null) {
-            roundInfo.setGoogleAnswers( new Vector<String>( arrayList ) );
+        if (!isCancelled()) {
+            if (TextUtils.isEmpty(query.getText().toString())) {
+                suggestions.setText(R.string.query_empty);
+                gameStartButton.setEnabled(false);
+                roundInfo.setGoogleAnswers(null);
+            } else if (arrayList != null) {
+                roundInfo.setGoogleAnswers(new Vector<String>(arrayList));
 
-            suggestions.setText("");
-            for (String suggestion : arrayList) {
-                suggestions.append(suggestion + "\n");
+                suggestions.setText("");
+                for (String suggestion : arrayList) {
+                    suggestions.append(suggestion + "\n");
+                }
+                gameStartButton.setEnabled(true);
+            } else {
+                suggestions.setText(R.string.query_invalid);
+                gameStartButton.setEnabled(false);
+                roundInfo.setGoogleAnswers(null);
             }
-            gameStartButton.setEnabled(true);
-        }
-        else {
-            suggestions.setText(R.string.query_invalid);
-            gameStartButton.setEnabled(false);
-            roundInfo.setGoogleAnswers( null );
         }
     }
 
