@@ -10,7 +10,6 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 import com.noveogroup.googoltoone.R;
 
 public class StartupActivity extends Activity {
@@ -55,10 +54,7 @@ public class StartupActivity extends Activity {
         }
     }
 
-    //CR move string to resources
     private void onHighScoresClickEvent() {
-        //Placeholder
-        //Toast.makeText(getApplicationContext(), "Not implemented yet", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(StartupActivity.this, BestScoresActivity.class);
         startActivity(intent);
     }

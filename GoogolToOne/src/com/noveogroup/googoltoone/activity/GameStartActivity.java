@@ -2,6 +2,7 @@ package com.noveogroup.googoltoone.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -9,10 +10,7 @@ import com.noveogroup.googoltoone.R;
 
 public class GameStartActivity extends android.app.Activity {
 
-    //CR Remove these tags and use their from GameBackgroungFragmentActivity
-    //Extras tags
-    public static final String player1Tag = "player1";
-    public static final String player2Tag = "player2";
+    //CRDone Remove these tags and use their from GameBackgroungFragmentActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,15 +35,15 @@ public class GameStartActivity extends android.app.Activity {
         String player1Name = player1.getText().toString();
         String player2Name = player2.getText().toString();
 
-        //CR use TextUtils.isEmpty(player1Name)
-        if(player1Name.equals("")) {
-            player1Name = "Player 1";  //CR move strings to resources
+        //CRDone use TextUtils.isEmpty(player1Name)
+        if(TextUtils.isEmpty(player1Name)) {
+            player1Name = getString(R.string.player1);  //CRDone move strings to resources
         }
-        if(player2Name.equals("")) {
-            player2Name = "Player 2";
+        if(TextUtils.isEmpty(player2Name)) {
+            player2Name = getString(R.string.player2);
         }
-        intent.putExtra(player1Tag, player1Name);
-        intent.putExtra(player2Tag, player2Name);
+        intent.putExtra(GameBackgroundFragmentActivity.PLAYER1_TAG, player1Name);
+        intent.putExtra(GameBackgroundFragmentActivity.PLAYER2_TAG, player2Name);
         startActivity(intent);
     }
 

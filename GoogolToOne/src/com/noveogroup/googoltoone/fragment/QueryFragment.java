@@ -12,7 +12,7 @@ import android.widget.EditText;
 import com.noveogroup.googoltoone.R;
 import com.noveogroup.googoltoone.activity.GameBackgroundFragmentActivity;
 import com.noveogroup.googoltoone.gamelogic.RoundInfo;
-import com.noveogroup.googoltoone.googleAPI.GoogleSuggestion;
+import com.noveogroup.googoltoone.googleAPI.GoogleSuggestionTask;
 
 public class QueryFragment extends Fragment {
     private RoundInfo roundInfo;
@@ -30,6 +30,7 @@ public class QueryFragment extends Fragment {
 
         query = (EditText) getView().findViewById(R.id.query);
         Button continueButton = (Button) getView().findViewById(R.id.continue_button);
+        continueButton.setEnabled(false);
 
         roundInfo = new RoundInfo();
         // TODO: what is correct way?  CR Try to use singleton?
@@ -44,7 +45,7 @@ public class QueryFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                new GoogleSuggestion(QueryFragment.this, roundInfo).execute(s.toString());
+                new GoogleSuggestionTask(QueryFragment.this, roundInfo).execute(s.toString());
             }
         });
 
