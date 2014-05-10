@@ -158,6 +158,9 @@ public class GoogleSuggestionTask extends AsyncTask<String, Void , List<String>>
         if (!result.toLowerCase().contains(queryString + " ")) {
             return false;
         }
+        else if(result.toLowerCase().indexOf(queryString + " ") > 0) {
+            return false;
+        }
         else if (result.toLowerCase().equals(queryString)) {
             return false;
         }
