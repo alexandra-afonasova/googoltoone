@@ -15,6 +15,7 @@ public class RoundInfo {
 
     private int lastAddScore;
     private int numberAttempts;
+    private int errorsCounter;
 
     public RoundInfo() {
         this.googleAnswers = new Vector<String>();
@@ -23,6 +24,7 @@ public class RoundInfo {
         roundScoreQuerier = 0;
         this.indexGuessedAnswers = new Vector<Integer>();
         this.numberAttempts = MAX_NUMBER_ATTEMPTS;
+        this.errorsCounter = 0;
     }
 
     public void setGoogleAnswers(Vector<String> googleAnswers) {
@@ -30,8 +32,11 @@ public class RoundInfo {
     }
 
     // CRDONE names of boolean methods must started by is... was... need... etc.
-    public boolean isCheckAnswer(String answer) {
+    public boolean isAnswerCorrect(String answer) {
         if (!googleAnswers.contains(answer)) {
+            // add to error's counter
+            errorsCounter++;
+
             return false;
         }
 
@@ -74,5 +79,9 @@ public class RoundInfo {
 
     public void setBeginRequest(String beginRequest) {
         this.beginRequest = beginRequest;
+    }
+
+    public int getCurrentNumberOfErrors() {
+        return errorsCounter;
     }
 }

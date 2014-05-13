@@ -42,6 +42,39 @@
             android:hint="@string/default_answer_ans_typ"
             android:inputType="text"/>
 
+    <!-- TODO: How can i scale to width every images? -->
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <ImageView
+                android:id="@+id/error_img1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/error"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"/>
+
+        <ImageView
+                android:id="@+id/error_img2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/error"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"/>
+
+        <ImageView
+                android:id="@+id/error_img3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/error"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"/>
+    </LinearLayout>
+
     <Button
             android:id="@+id/checkButton"
             android:layout_width="@dimen/button_width"
@@ -49,7 +82,5 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/button_margin_top"
             android:text="@string/check_ans_typ"/>
-
-    <!-- TODO: add image -->
 
 </LinearLayout>

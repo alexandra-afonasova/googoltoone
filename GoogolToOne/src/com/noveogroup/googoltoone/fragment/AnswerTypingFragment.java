@@ -1,14 +1,13 @@
 package com.noveogroup.googoltoone.fragment;
 
+import android.graphics.drawable.Drawable;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.*;
 import com.noveogroup.googoltoone.R;
 import com.noveogroup.googoltoone.ScoreUpdater;
 import com.noveogroup.googoltoone.activity.GameBackgroundFragmentActivity;
@@ -51,11 +50,28 @@ public class AnswerTypingFragment extends Fragment {
         String answerStr = answerET.getText().toString();
 
         // if correct guessed
-        if( roundInfo.isCheckAnswer(roundInfo.getBeginRequest() + answerStr) ){
+        if( roundInfo.isAnswerCorrect(roundInfo.getBeginRequest() + answerStr) ){
             //CRDONE Use string formatter. Add space before scores
             Toast.makeText( getActivity(), getResources().getString(R.string.check_answer_correct_fmt_ans_typ, roundInfo.getLastAddScore() ), Toast.LENGTH_SHORT).show();
         } else{
             Toast.makeText( getActivity(), getResources().getString(R.string.check_answer_try_again_ans_typ), Toast.LENGTH_SHORT).show();
+
+            // error sounds
+            MediaPlayer sound = MediaPlayer.create(getActivity(), R.raw.errorsound);
+            sound.start();
+
+            // lighting errors images
+            int imgId = R.id.error_img1;
+            switch ( roundInfo.getCurrentNumberOfErrors() ){
+                case 2:
+                    imgId = R.id.error_img2;
+                    break;
+                case 3:
+                    imgId = R.id.error_img3;
+                    break;
+            }
+            ImageView curErrorImg = (ImageView) getActivity().findViewById( imgId );
+            curErrorImg.setImageResource( R.drawable.error_light );
         }
 
         //CRDONE Cast to ScoreUpdater interface
