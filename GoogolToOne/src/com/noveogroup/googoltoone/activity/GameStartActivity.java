@@ -2,17 +2,14 @@ package com.noveogroup.googoltoone.activity;
 
 import android.content.Intent;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.EditText;
 import com.noveogroup.googoltoone.R;
 import com.noveogroup.googoltoone.database.ContentDescriptor;
-import com.noveogroup.googoltoone.database.OpenHelper;
 
 import java.util.ArrayList;
 
@@ -20,23 +17,20 @@ public class GameStartActivity extends android.app.Activity {
 
     //CRDone Remove these tags and use their from GameBackgroungFragmentActivity
 
+    private AutoCompleteTextView player1;
+    private AutoCompleteTextView player2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.gamestart);
 
-        ArrayList<String> names = new ArrayList<String>();
-        OpenHelper helper = OpenHelper.getInstance(this);
-        SQLiteDatabase db = helper.getReadableDatabase();
-        Cursor cursor = db.query("players", new String[] {ContentDescriptor.Players.Cols.NAME}, null, null, null, null, null);
-        for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
-            names.add(cursor.getString(0));
-        }
-        String[] namesArray = names.toArray(new String[names.size()]);
+        player1 = (AutoCompleteTextView) findViewById(R.id.player1);
+        player2 = (AutoCompleteTextView) findViewById(R.id.player2);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, namesArray);
-        AutoCompleteTextView textView = (AutoCompleteTextView) findViewById(R.id.autocomplete);
-        textView.setAdapter(adapter);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, getNamesFromDB());
+        player1.setAdapter(adapter);
+        player2.setAdapter(adapter);
 
         final Button startButton = (Button) findViewById(R.id.startButton);
 
@@ -51,8 +45,6 @@ public class GameStartActivity extends android.app.Activity {
 
     private void startOnClickEvent() {
         Intent intent = new Intent(GameStartActivity.this, GameBackgroundFragmentActivity.class);
-        final EditText player1 = (EditText) findViewById(R.id.player1);
-        final EditText player2 = (EditText) findViewById(R.id.player2);
         String player1Name = player1.getText().toString();
         String player2Name = player2.getText().toString();
 
@@ -68,4 +60,20 @@ public class GameStartActivity extends android.app.Activity {
         startActivity(intent);
     }
 
+    private String[] getNamesFromDB () {
+        ArrayList<String> names = new ArrayList<String>();
+
+        Cursor cursor = getContentResolver().query(ContentDescriptor.Players.TABLE_URI, new String[] {ContentDescriptor.Players.Cols.NAME}, null, null, null);
+        for(cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
+            names.add(cursor.getString(0));
+        }
+        return names.toArray(new String[names.size()]);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        player1 = null;
+        player2 = null;
+    }
 }
