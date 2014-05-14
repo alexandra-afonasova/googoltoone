@@ -26,13 +26,47 @@ public class GTOContentProvider extends ContentProvider {
 
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
-        //TODO: here we can read one row in table
         Cursor cursor = null;
         if (db != null) {
-            cursor = db.query(tableName, projection, selection, selectionArgs, null, null, orderBy);
-        }
-        if (cursor != null) {
-            cursor.setNotificationUri(getContext().getContentResolver(), uri);
+            if (tableName != ContentDescriptor.GamesWithPlayersNames.TABLE_NAME) {
+                //TODO: here we can read one row in table
+                cursor = db.query(tableName, projection, selection, selectionArgs, null, null, orderBy);
+            } else {
+                // special raw Query
+                // TODO: rename
+                /*String rawStr = "SELECT " +
+                        ContentDescriptor.Players.TABLE_NAME + "." + ContentDescriptor.GamesWithPlayersNames.Cols.PLAYER1_NAME + ", " +
+                        ContentDescriptor.Games.TABLE_NAME + "." + ContentDescriptor.GamesWithPlayersNames.Cols.PLAYER1_SCORE + ", " +
+                        ContentDescriptor.Games.TABLE_NAME + "." + ContentDescriptor.GamesWithPlayersNames.Cols.PLAYER2_SCORE +
+                        " FROM " + ContentDescriptor.Games.TABLE_NAME +
+                        " JOIN " + ContentDescriptor.Players.TABLE_NAME +
+                        " ON " +
+                        ContentDescriptor.Games.TABLE_NAME + "." + ContentDescriptor.Games.Cols.ID_PLAYER1 +
+                        " = " + ContentDescriptor.Players.TABLE_NAME + "." + ContentDescriptor.Players.Cols.ID;
+                */
+                // TODO: select field didn't work
+                String rawStr2 = "SELECT * " +
+                        " FROM " + ContentDescriptor.Games.TABLE_NAME + " a " +
+                        " INNER JOIN " + ContentDescriptor.Players.TABLE_NAME + " b " +
+                        " ON " +
+                        "a" + "." + ContentDescriptor.Games.Cols.ID_PLAYER1 +
+                        " = " + "b" + "." + ContentDescriptor.Players.Cols.ID +
+                        " INNER JOIN " + ContentDescriptor.Players.TABLE_NAME + " c " +
+                        " ON " +
+                        "a" + "." + ContentDescriptor.Games.Cols.ID_PLAYER2 +
+                        " = " + "c" + "." + ContentDescriptor.Players.Cols.ID;
+                cursor = db.rawQuery( rawStr2, null);
+
+                int count = cursor.getCount();
+                if( count == 0 ){
+                    count = 5;
+                }
+                cursor.moveToFirst(); // TODO: need?
+            }
+
+            if (cursor != null) {
+                cursor.setNotificationUri(getContext().getContentResolver(), uri);
+            }
         }
 
         return cursor;
@@ -48,6 +82,10 @@ public class GTOContentProvider extends ContentProvider {
     public Uri insert(Uri uri, ContentValues contentValues) {
         int uriType = ContentDescriptor.uriMatcher.match(uri);
         String tableName = ContentDescriptor.getTableName(uriType);
+
+        if( tableName == ContentDescriptor.GamesWithPlayersNames.TABLE_NAME ){
+            throw new RuntimeException("don't insert"); // TODO: add to resource
+        }
 
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         long id = 0;
@@ -72,6 +110,10 @@ public class GTOContentProvider extends ContentProvider {
         int uriType = ContentDescriptor.uriMatcher.match(uri);
         String tableName = ContentDescriptor.getTableName(uriType);
 
+        if( tableName == ContentDescriptor.GamesWithPlayersNames.TABLE_NAME ){
+            throw new RuntimeException("don't insert"); // TODO: add to resource
+        }
+
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         // TODO: if we want delete only one row, we can't, only all rows
         int result = 0;
@@ -87,6 +129,10 @@ public class GTOContentProvider extends ContentProvider {
     public int update(Uri uri, ContentValues contentValues, String selection, String[] selectionArgs) {
         int uriType = ContentDescriptor.uriMatcher.match(uri);
         String tableName = ContentDescriptor.getTableName(uriType);
+
+        if( tableName == ContentDescriptor.GamesWithPlayersNames.TABLE_NAME ){
+            throw new RuntimeException("don't insert"); // TODO: add to resource
+        }
 
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         // TODO: if we want update only one row, we can't, only all rows

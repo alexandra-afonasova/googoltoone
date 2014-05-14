@@ -8,7 +8,7 @@ import android.provider.BaseColumns;
 // TODO: implements BaseColumns
 public class OpenHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "googoltoone.db";
-    private static final int DATABASE_VERSION = 4;
+    private static final int DATABASE_VERSION = 5;
     private static OpenHelper instance = null;
 
     private OpenHelper(Context context) {
