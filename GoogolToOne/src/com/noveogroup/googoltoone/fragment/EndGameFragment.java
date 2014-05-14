@@ -10,10 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-
 import com.noveogroup.googoltoone.R;
 import com.noveogroup.googoltoone.activity.GameBackgroundFragmentActivity;
-import com.noveogroup.googoltoone.activity.StartupActivity;
 import com.noveogroup.googoltoone.activity.StartupActivity;
 import com.noveogroup.googoltoone.database.ContentDescriptor;
 import com.noveogroup.googoltoone.gamelogic.GameInfo;

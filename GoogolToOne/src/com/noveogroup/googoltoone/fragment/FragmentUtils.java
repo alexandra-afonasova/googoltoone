@@ -1,7 +1,6 @@
 package com.noveogroup.googoltoone.fragment;
 
 import android.support.v4.app.Fragment;
-import android.os.Build;
 import android.support.v4.app.FragmentManager;
 import com.noveogroup.googoltoone.R;
 
