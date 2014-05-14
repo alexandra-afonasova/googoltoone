@@ -22,6 +22,8 @@ public class ContentDescriptor {
             addURI(AUTHORITY, Players.TABLE_NAME + "/#/", Players.URI_CODE);
             addURI(AUTHORITY, Games.TABLE_NAME, Games.ALL_URI_CODE);
             addURI(AUTHORITY, Games.TABLE_NAME + "/#/", Games.URI_CODE);
+            addURI(AUTHORITY, GamesWithPlayersNames.TABLE_NAME, GamesWithPlayersNames.ALL_URI_CODE);
+            addURI(AUTHORITY, GamesWithPlayersNames.TABLE_NAME + "/#/", GamesWithPlayersNames.URI_CODE);
         }
 
         @Override
@@ -67,6 +69,15 @@ public class ContentDescriptor {
         }
     }
 
+    // special abstract table for view best scores
+    public static class GamesWithPlayersNames {
+        public static final String TABLE_NAME = "gameswithplayersnames";
+
+        public static final Uri TABLE_URI = CONTENT_BASE_URI.buildUpon().appendPath(TABLE_NAME).build();
+        public static final int ALL_URI_CODE = 4;
+        public static final int URI_CODE = 5;
+    }
+
     public static String getTableName(int uriCode) {
         switch (uriCode) {
             case Players.ALL_URI_CODE:
@@ -75,6 +86,9 @@ public class ContentDescriptor {
             case Games.ALL_URI_CODE:
             case Games.URI_CODE:
                 return Games.TABLE_NAME;
+            case GamesWithPlayersNames.ALL_URI_CODE:
+            case GamesWithPlayersNames.URI_CODE:
+                return GamesWithPlayersNames.TABLE_NAME;
         }
         throw new IllegalArgumentException("uriCode " + uriCode);
     }
