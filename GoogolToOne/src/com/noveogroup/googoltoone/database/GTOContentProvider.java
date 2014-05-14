@@ -1,7 +1,6 @@
 package com.noveogroup.googoltoone.database;
 
 import android.content.ContentProvider;
-import android.content.ContentUris;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
