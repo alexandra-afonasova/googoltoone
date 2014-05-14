@@ -3,7 +3,7 @@ package com.noveogroup.googoltoone.gamelogic;
 import java.util.Vector;
 
 public class RoundInfo {
-    public static final int MAX_NUMBER_ATTEMPTS = 3;
+    public static final int MAX_NUMBER_ATTEMPTS = 5;
     private static final int MAX_NUMBER_ANSWER = 5;
     private static final int MULTIPLY_FACTOR = 10;
 

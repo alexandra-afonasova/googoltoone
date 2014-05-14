@@ -92,7 +92,6 @@ public class GoogleSuggestionTask extends AsyncTask<String, Void , List<String>>
 
     //CRDone Use List<String> as return statement
     private List<String> getXML (String queryURL) {
-        //List<String> result = new ArrayList<String>();
         InputStream inputStream = null;
         try {
             URL url = new URL(queryURL);
@@ -168,7 +167,5 @@ public class GoogleSuggestionTask extends AsyncTask<String, Void , List<String>>
             return true;
         }
     }
-
-
 
 }

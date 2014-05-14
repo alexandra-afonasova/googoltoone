@@ -1,6 +1,5 @@
 package com.noveogroup.googoltoone.fragment;
 
-import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -50,7 +49,7 @@ public class AnswerTypingFragment extends Fragment {
         String answerStr = answerET.getText().toString();
 
         // if correct guessed
-        if( roundInfo.isAnswerCorrect(roundInfo.getBeginRequest() + answerStr) ){
+        if( roundInfo.isAnswerCorrect(roundInfo.getBeginRequest() + " " + answerStr) ){
             //CRDONE Use string formatter. Add space before scores
             Toast.makeText( getActivity(), getResources().getString(R.string.check_answer_correct_fmt_ans_typ, roundInfo.getLastAddScore() ), Toast.LENGTH_SHORT).show();
         } else{
@@ -79,7 +78,7 @@ public class AnswerTypingFragment extends Fragment {
         parentActivity.updateScore();
 
         // if round end then switch fragment
-        if( roundInfo.reduceAttempts() ){
+        if( roundInfo.reduceAttempts() || roundInfo.getCurrentNumberOfErrors() == 3 ){
             // switch next to round end
             //CRDONE Create and use newInstance() method instead of constructor
             Fragment roundResult = RoundResultFragment.newInstance();
