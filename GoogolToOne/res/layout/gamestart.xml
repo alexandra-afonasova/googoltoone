@@ -28,12 +28,13 @@
                 android:hint="@string/player1"
                 android:layout_marginTop="@dimen/button_margin_top"/>
 
-        <!-- CR Add android:contentDescription="@null" or suppressWarning-->
+        <!-- CRDone Add android:contentDescription="@null" or suppressWarning-->
         <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/vs"
                 android:layout_gravity="center_horizontal"
+                android:contentDescription="@null"
                 android:layout_margin="@dimen/button_margin_top"/>
 
         <EditText
@@ -41,6 +42,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/player2"/>
+
+        <AutoCompleteTextView
+                android:id="@+id/autocomplete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/player1"/>
 
     </LinearLayout>
 
