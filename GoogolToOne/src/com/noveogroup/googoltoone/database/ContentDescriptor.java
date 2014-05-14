@@ -76,14 +76,6 @@ public class ContentDescriptor {
         public static final Uri TABLE_URI = CONTENT_BASE_URI.buildUpon().appendPath(TABLE_NAME).build();
         public static final int ALL_URI_CODE = 4;
         public static final int URI_CODE = 5;
-
-        public static class Cols {
-            public static final String PLAYER1_NAME = "name";
-            public static final String PLAYER1_SCORE = "player1_score";
-            public static final String PLAYER2_SCORE = "player2_score";
-            // TODO
-            public static final String TIME_FINISH = "time_finish";
-        }
     }
 
     public static String getTableName(int uriCode) {

@@ -33,35 +33,23 @@ public class GTOContentProvider extends ContentProvider {
                 cursor = db.query(tableName, projection, selection, selectionArgs, null, null, orderBy);
             } else {
                 // special raw Query
-                // TODO: rename
-                /*String rawStr = "SELECT " +
-                        ContentDescriptor.Players.TABLE_NAME + "." + ContentDescriptor.GamesWithPlayersNames.Cols.PLAYER1_NAME + ", " +
-                        ContentDescriptor.Games.TABLE_NAME + "." + ContentDescriptor.GamesWithPlayersNames.Cols.PLAYER1_SCORE + ", " +
-                        ContentDescriptor.Games.TABLE_NAME + "." + ContentDescriptor.GamesWithPlayersNames.Cols.PLAYER2_SCORE +
-                        " FROM " + ContentDescriptor.Games.TABLE_NAME +
-                        " JOIN " + ContentDescriptor.Players.TABLE_NAME +
-                        " ON " +
-                        ContentDescriptor.Games.TABLE_NAME + "." + ContentDescriptor.Games.Cols.ID_PLAYER1 +
-                        " = " + ContentDescriptor.Players.TABLE_NAME + "." + ContentDescriptor.Players.Cols.ID;
-                */
-                // TODO: select field didn't work
-                String rawStr2 = "SELECT * " +
+                String rawQuery = "SELECT" +
+                            " b." + ContentDescriptor.Players.Cols.ID + "," +
+                            " b." + ContentDescriptor.Players.Cols.NAME + " as player1_name," +
+                            " c." + ContentDescriptor.Players.Cols.NAME + " as player2_name, " +
+                            ContentDescriptor.Games.Cols.PLAYER1_SCORE + ", " +
+                            ContentDescriptor.Games.Cols.PLAYER2_SCORE +
                         " FROM " + ContentDescriptor.Games.TABLE_NAME + " a " +
                         " INNER JOIN " + ContentDescriptor.Players.TABLE_NAME + " b " +
                         " ON " +
-                        "a" + "." + ContentDescriptor.Games.Cols.ID_PLAYER1 +
-                        " = " + "b" + "." + ContentDescriptor.Players.Cols.ID +
+                            "a." + ContentDescriptor.Games.Cols.ID_PLAYER1 +
+                            " = b." + ContentDescriptor.Players.Cols.ID +
                         " INNER JOIN " + ContentDescriptor.Players.TABLE_NAME + " c " +
                         " ON " +
-                        "a" + "." + ContentDescriptor.Games.Cols.ID_PLAYER2 +
-                        " = " + "c" + "." + ContentDescriptor.Players.Cols.ID;
-                cursor = db.rawQuery( rawStr2, null);
-
-                int count = cursor.getCount();
-                if( count == 0 ){
-                    count = 5;
-                }
-                cursor.moveToFirst(); // TODO: need?
+                            "a." + ContentDescriptor.Games.Cols.ID_PLAYER2 +
+                            " = c." + ContentDescriptor.Players.Cols.ID +
+                        " ORDER BY " + ContentDescriptor.Games.Cols.TIME_FINISH + " DESC";
+                cursor = db.rawQuery( rawQuery, null);
             }
 
             if (cursor != null) {

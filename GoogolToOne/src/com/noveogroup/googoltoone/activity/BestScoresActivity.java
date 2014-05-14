@@ -25,19 +25,19 @@ public class BestScoresActivity extends Activity implements LoaderManager.Loader
         super.onCreate(savedInstanceState);
         setContentView(R.layout.best_scores);
 
+        String playerOneName = "player1_name";
+        String playerTwoName = "player2_name";
+
         ListView listView = (ListView) findViewById(R.id.list);
 
         LoaderManager loaderManager = getLoaderManager();
 
-        // TODO: NAMEs for IDs
         String[] colomns = new String[]{
-                "b.name",
-                ContentDescriptor.GamesWithPlayersNames.Cols.PLAYER1_SCORE,
-                ContentDescriptor.GamesWithPlayersNames.Cols.PLAYER2_SCORE,
-                "c.name"}; //TODO
-        /*String[] colomns = new String[]{
-                ContentDescriptor.Players.Cols.NAME,
-                ContentDescriptor.Players.Cols.ID};*/
+                playerOneName,
+                ContentDescriptor.Games.Cols.PLAYER1_SCORE,
+                ContentDescriptor.Games.Cols.PLAYER2_SCORE,
+                playerTwoName};
+
         int[] toFields = new int[]{
                 R.id.item_player_one_name,
                 R.id.item_player_one_score,
@@ -52,7 +52,6 @@ public class BestScoresActivity extends Activity implements LoaderManager.Loader
 
     @Override
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
-        //return new CursorLoader(BestScoresActivity.this, ContentDescriptor.GamesWithPlayersNames.TABLE_URI, null, null, null, null);
         return new CursorLoader(BestScoresActivity.this, ContentDescriptor.GamesWithPlayersNames.TABLE_URI, null, null, null, null);
     }
 
