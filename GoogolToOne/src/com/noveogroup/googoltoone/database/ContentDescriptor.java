@@ -4,7 +4,6 @@ import android.content.ContentResolver;
 import android.content.UriMatcher;
 import android.net.Uri;
 import android.provider.BaseColumns;
-import com.noveogroup.googoltoone.database.model.Game;
 
 public class ContentDescriptor {
     private static final String AUTHORITY = "com.noveogroup.googoltoone.GTOContentProvider";

@@ -3,7 +3,6 @@ package com.noveogroup.googoltoone.database;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.provider.BaseColumns;
 
 // TODO: implements BaseColumns
 public class OpenHelper extends SQLiteOpenHelper {
