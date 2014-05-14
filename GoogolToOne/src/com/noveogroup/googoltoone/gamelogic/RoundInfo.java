@@ -16,6 +16,7 @@ public class RoundInfo {
     private int lastAddScore;
     private int numberAttempts;
     private int errorsCounter;
+    private int currentAnswers;
 
     public RoundInfo() {
         this.googleAnswers = new Vector<String>();
@@ -45,6 +46,7 @@ public class RoundInfo {
         if (!indexGuessedAnswers.contains(indexOfFoundAnswer)) { // if same answer was not earlier
             indexGuessedAnswers.add(googleAnswers.indexOf(answer));
             lastAddScore = (int) ((MAX_NUMBER_ANSWER - indexGuessedAnswers.lastElement()) * Math.pow(MULTIPLY_FACTOR, numberAttempts - 1));
+            currentAnswers++;
         } else {
             lastAddScore = 0;
             return false;
@@ -83,5 +85,9 @@ public class RoundInfo {
 
     public int getCurrentNumberOfErrors() {
         return errorsCounter;
+    }
+
+    public int getCurrentAnswers() {
+        return currentAnswers;
     }
 }

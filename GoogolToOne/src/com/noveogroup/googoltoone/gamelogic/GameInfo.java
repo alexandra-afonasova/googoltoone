@@ -67,4 +67,10 @@ public class GameInfo {
     public int getAndIncreaseRoundNumber() {
         return currentNumberRound++;
     }
+
+    public boolean getNextPlayer() {return !isQuerierPlayerOne;}
+
+    public int getCurrentNumberRound() {
+        return currentNumberRound;
+    }
 }

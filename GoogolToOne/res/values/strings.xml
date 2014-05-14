@@ -42,8 +42,8 @@
     <!-- Set of strings for congratulations -->
     <string name="congratulation1_ro_res">You guessed 3 most popular answer and earn 20 points!</string>
 
-    <string name="next_step_ro_res">Next step: </string>
-    <string name="until_end_rounds_ro_res">Until the end of the game remains Rounds: </string>
+    <string name="next_step_ro_res">Next player: </string>
+    <string name="until_end_rounds_ro_res">Rounds remaining: </string>
     <string name="next_round_ro_res">Next Round</string>
 
     <!-- Strings for End Game layout-->
