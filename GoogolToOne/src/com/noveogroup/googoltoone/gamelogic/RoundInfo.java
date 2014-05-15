@@ -37,7 +37,6 @@ public class RoundInfo {
         if (!googleAnswers.contains(answer)) {
             // add to error's counter
             errorsCounter++;
-
             return false;
         }
 
@@ -45,10 +44,11 @@ public class RoundInfo {
         int indexOfFoundAnswer = googleAnswers.indexOf(answer);
         if (!indexGuessedAnswers.contains(indexOfFoundAnswer)) { // if same answer was not earlier
             indexGuessedAnswers.add(googleAnswers.indexOf(answer));
-            lastAddScore = (int) ((MAX_NUMBER_ANSWER - indexGuessedAnswers.lastElement()) * Math.pow(MULTIPLY_FACTOR, numberAttempts - 1));
+            lastAddScore = (MAX_NUMBER_ANSWER - indexGuessedAnswers.lastElement()) * MULTIPLY_FACTOR;
             currentAnswers++;
         } else {
             lastAddScore = 0;
+            errorsCounter ++;
             return false;
         }
 

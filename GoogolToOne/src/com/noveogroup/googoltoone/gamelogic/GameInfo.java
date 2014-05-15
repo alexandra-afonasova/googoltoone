@@ -1,7 +1,7 @@
 package com.noveogroup.googoltoone.gamelogic;
 
 public class GameInfo {
-    public static final int NUMBER_ROUNDS = 1;
+    public static final int NUMBER_ROUNDS = 2;
 
     private int currentScoreOnePlayer;
     private int currentScoreTwoPlayer;

@@ -54,7 +54,7 @@
                 android:layout_weight="1"
                 android:src="@drawable/error"
                 android:adjustViewBounds="true"
-                android:scaleType="fitCenter"/>
+                android:scaleType="center"/>
 
         <ImageView
                 android:id="@+id/error_img2"
@@ -63,7 +63,7 @@
                 android:layout_weight="1"
                 android:src="@drawable/error"
                 android:adjustViewBounds="true"
-                android:scaleType="fitCenter"/>
+                android:scaleType="center"/>
 
         <ImageView
                 android:id="@+id/error_img3"
@@ -72,7 +72,7 @@
                 android:layout_weight="1"
                 android:src="@drawable/error"
                 android:adjustViewBounds="true"
-                android:scaleType="fitCenter"/>
+                android:scaleType="center"/>
     </LinearLayout>
 
     <Button
