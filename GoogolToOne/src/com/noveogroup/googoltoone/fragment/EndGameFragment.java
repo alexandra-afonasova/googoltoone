@@ -20,6 +20,7 @@ import com.noveogroup.googoltoone.gamelogic.GameInfo;
 public class EndGameFragment extends Fragment {
 
     GameBackgroundFragmentActivity parentActivity;
+    GameInfo gameInfo;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -27,7 +28,7 @@ public class EndGameFragment extends Fragment {
 
         parentActivity = (GameBackgroundFragmentActivity) getActivity();
 
-        GameInfo gameInfo = parentActivity.getGameInfo();
+        gameInfo = parentActivity.getGameInfo();
 
         Button againBtn = (Button) view.findViewById(R.id.again_btn);
         againBtn.setOnClickListener(new View.OnClickListener() {
@@ -42,6 +43,10 @@ public class EndGameFragment extends Fragment {
         enoughBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // TODO: join with earlier queries
+                // add new Game to bd
+                insertGameToDB( gameInfo );
+
                 Intent intent = new Intent(getActivity(), StartupActivity.class);
                 startActivity(intent);
             }
@@ -67,10 +72,6 @@ public class EndGameFragment extends Fragment {
                 insertPlayerToDB(gameInfo.getPlayerOneName());
             }
         }
-
-        // TODO: join with earlier queries
-        // add new Game to bd
-        insertGameToDB( gameInfo );
 
         return view;
     }
