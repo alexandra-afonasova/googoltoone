@@ -20,8 +20,8 @@ public class GameBackgroundFragmentActivity extends FragmentActivity implements 
     public static final String PLAYER1_TAG = "player1";
     public static final String PLAYER2_TAG = "player2";
 
-    private String playerOneName;
-    private String playerTwoName;
+    private static String playerOneName;
+    private static String playerTwoName;
 
     private TextView scoreTextView;
 
@@ -32,8 +32,11 @@ public class GameBackgroundFragmentActivity extends FragmentActivity implements 
 
         scoreTextView = (TextView) findViewById(R.id.score);
         Intent intent = getIntent();
-        playerOneName = intent.getStringExtra(PLAYER1_TAG);
-        playerTwoName = intent.getStringExtra(PLAYER2_TAG);
+        // TODO: if our intent
+        if( intent.getStringExtra(PLAYER1_TAG) != null ) {
+            playerOneName = intent.getStringExtra(PLAYER1_TAG);
+            playerTwoName = intent.getStringExtra(PLAYER2_TAG);
+        }
 
         gameInfo = new GameInfo( playerOneName, playerTwoName );
         updateScore();

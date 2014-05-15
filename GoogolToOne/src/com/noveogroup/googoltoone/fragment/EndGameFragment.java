@@ -34,6 +34,10 @@ public class EndGameFragment extends Fragment {
         againBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // TODO: join with earlier queries
+                // add new Game to bd
+                insertGameToDB( gameInfo );
+
                 Intent intent = new Intent(getActivity(), GameBackgroundFragmentActivity.class);
                 startActivity(intent);
             }
