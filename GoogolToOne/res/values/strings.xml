@@ -38,9 +38,14 @@
 
     <!-- Strings for Round result layout -->
     <string name="title_activity_ro_res">Round Result</string>
-    <string name="bingo_ro_res">Bingo!</string>
+    <string name="bingo_ro_res">Round results</string>
     <!-- Set of strings for congratulations -->
-    <string name="congratulation1_ro_res">You guessed 3 most popular answer and earn 20 points!</string>
+    <string name="result1_ro_res">You guessed</string>
+    <string name="result2_multiple_ro_res">answers</string>
+    <string name="result2_singular_ro_res">answer</string>
+    <string name="result2_rus_ro_res">answers</string>
+    <string name="result3_ro_res">and earned</string>
+    <string name="result4_ro_res">points.</string>
 
     <string name="next_step_ro_res">Next player: </string>
     <string name="until_end_rounds_ro_res">Rounds remaining: </string>
@@ -48,9 +53,10 @@
 
     <!-- Strings for End Game layout-->
     <string name="title_activity_end_game">End Game</string>
-    <string name="congratulation1_end_game">Congratulations, </string>
+    <string name="congratulation1_end_game">Congratulations,</string>
     <string name="congratulation2_end_game">You win!</string>
-    <string name="score_end_game">Final score: </string>
+    <string name="draw_end_game">It\'s a draw.</string>
+    <string name="score_end_game">Final score:</string>
     <string name="btn_again_end_game">Again</string>
     <string name="btn_enough_end_game">Enough</string>
     <string name="title_best_sc">Best Scores</string>

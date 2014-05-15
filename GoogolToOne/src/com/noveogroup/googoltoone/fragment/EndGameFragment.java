@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import com.noveogroup.googoltoone.R;
 import com.noveogroup.googoltoone.activity.GameBackgroundFragmentActivity;
 import com.noveogroup.googoltoone.activity.StartupActivity;
@@ -18,11 +19,13 @@ import com.noveogroup.googoltoone.gamelogic.GameInfo;
 
 public class EndGameFragment extends Fragment {
 
+    GameBackgroundFragmentActivity parentActivity;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.end_game, container, false);
 
-        GameBackgroundFragmentActivity parentActivity = (GameBackgroundFragmentActivity) getActivity();
+        parentActivity = (GameBackgroundFragmentActivity) getActivity();
 
         GameInfo gameInfo = parentActivity.getGameInfo();
 
@@ -70,6 +73,32 @@ public class EndGameFragment extends Fragment {
         insertGameToDB( gameInfo );
 
         return view;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        String winner;
+        TextView congratulations = (TextView) getView().findViewById(R.id.cong_player);
+        TextView youWin = (TextView) getView().findViewById(R.id.you_win);
+        TextView score = (TextView) getView().findViewById(R.id.score_text_view);
+
+        if(parentActivity.getGameInfo().getCurrentScoreOnePlayer() > parentActivity.getGameInfo().getCurrentScoreTwoPlayer()) {
+            winner = parentActivity.getGameInfo().getPlayerOneName();
+            congratulations.append(" " + winner);
+        }
+        else if (parentActivity.getGameInfo().getCurrentScoreOnePlayer() < parentActivity.getGameInfo().getCurrentScoreTwoPlayer()) {
+            winner = parentActivity.getGameInfo().getPlayerTwoName();
+            congratulations.append(" " + winner);
+        }
+        else {
+            congratulations.setText(R.string.draw_end_game);
+            youWin.setText("");
+        }
+
+        score.append(" " + parentActivity.getGameInfo().getCurrentScoreOnePlayer() + getString(R.string.colon) + parentActivity.getGameInfo().getCurrentScoreTwoPlayer());
+
     }
 
     public static Fragment newInstance() {

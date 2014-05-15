@@ -74,22 +74,28 @@ public class RoundResultFragment extends Fragment {
         int score = roundInfo.getRoundScoreAnswerer();
         int answers = roundInfo.getCurrentAnswers();
         StringBuilder builder = new StringBuilder();
-        builder.append("Вы правильно угадали ");
+        builder.append(getString(R.string.result1_ro_res));
+        builder.append(" ");
         builder.append(answers);
+        builder.append(" ");
         switch (answers) {
-            case 1: builder.append(" ответ");
+            case 1: builder.append(getString(R.string.result2_singular_ro_res));
                     break;
             case 2:
             case 3:
-            case 4: builder.append(" ответа");
+            case 4: builder.append(getString(R.string.result2_rus_ro_res));
                     break;
             case 5:
-            case 0: builder.append(" ответов");
+            case 0: builder.append(getString(R.string.result2_multiple_ro_res));
                     break;
         }
-        builder.append(" и заработали ");
+        builder.append(" ");
+        builder.append(getString(R.string.result3_ro_res));
+        builder.append(" ");
         builder.append(score);
-        builder.append(" очков.");
+        builder.append(" ");
+        builder.append(getString(R.string.result4_ro_res));
         return builder.toString();
     }
+
 }

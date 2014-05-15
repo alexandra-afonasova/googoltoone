@@ -33,9 +33,14 @@
 
     <!-- Strings for Round result -->
     <string name="title_activity_ro_res">Итоги раунда</string>
-    <string name="bingo_ro_res">Ура!</string>
+    <string name="bingo_ro_res">Результаты раунда</string>
     <!-- Set of strings for congratulations -->
-    <string name="congratulation1_ro_res">Вы отгадали 3 самых популярных ответа и заработали 20 очков!</string>
+    <string name="result1_ro_res">Вы правильно угадали </string>
+    <string name="result2_multiple_ro_res"> ответов </string>
+    <string name="result2_singular_ro_res"> ответ </string>
+    <string name="result2_rus_ro_res"> ответа </string>
+    <string name="result3_ro_res">и заработали </string>
+    <string name="result4_ro_res"> очков.</string>
 
     <string name="next_step_ro_res">Теперь ходит: </string>
     <string name="until_end_rounds_ro_res">До конца игры осталось раундов: </string>
@@ -43,9 +48,10 @@
 
     <!-- Strings for End Game layout-->
     <string name="title_activity_end_game">Конец игры</string>
-    <string name="congratulation1_end_game">Поздравляем, </string>
+    <string name="congratulation1_end_game">Поздравляем, %s</string>
     <string name="congratulation2_end_game">Победа за Вами!</string>
-    <string name="score_end_game">Итоговый счёт: </string>
+    <string name="draw_end_game">Ничья.</string>
+    <string name="score_end_game">Итоговый счёт:</string>
     <string name="btn_again_end_game">Ещё раз</string>
     <string name="btn_enough_end_game">Хватит</string>
 

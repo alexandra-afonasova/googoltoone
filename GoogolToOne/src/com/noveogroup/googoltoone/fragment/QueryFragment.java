@@ -72,4 +72,5 @@ public class QueryFragment extends Fragment {
     public static Fragment newInstance() {
         return new QueryFragment();
     }
+
 }
