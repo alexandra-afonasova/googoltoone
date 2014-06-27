@@ -28,7 +28,6 @@ public class GTOContentProvider extends ContentProvider {
         Cursor cursor = null;
         if (db != null) {
             if (tableName != ContentDescriptor.GamesWithPlayersNames.TABLE_NAME) {
-                //TODO: here we can read one row in table
                 cursor = db.query(tableName, projection, selection, selectionArgs, null, null, orderBy);
             } else {
                 // special raw Query
@@ -64,14 +63,13 @@ public class GTOContentProvider extends ContentProvider {
         return null;
     }
 
-    // TODO: make for Games
     @Override
     public Uri insert(Uri uri, ContentValues contentValues) {
         int uriType = ContentDescriptor.uriMatcher.match(uri);
         String tableName = ContentDescriptor.getTableName(uriType);
 
         if( tableName == ContentDescriptor.GamesWithPlayersNames.TABLE_NAME ){
-            throw new RuntimeException("don't insert"); // TODO: add to resource
+            throw new RuntimeException("don't insert");
         }
 
         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -80,11 +78,9 @@ public class GTOContentProvider extends ContentProvider {
             id = db.insertWithOnConflict(tableName, null, contentValues, SQLiteDatabase.CONFLICT_IGNORE);
         }
 
-        // TODO: notify only new id
         getContext().getContentResolver().notifyChange(uri, null);
 
         if (TextUtils.equals(tableName, ContentDescriptor.Players.TABLE_NAME)) {
-            // TODO: talk to Roman and replace to:
             //ContentUris.withAppendedId(ContentDescriptor.Players.TABLE_URI, id);
             return Uri.parse(ContentDescriptor.Players.TABLE_URI + "/" + id);
         }else {
@@ -98,11 +94,10 @@ public class GTOContentProvider extends ContentProvider {
         String tableName = ContentDescriptor.getTableName(uriType);
 
         if( tableName == ContentDescriptor.GamesWithPlayersNames.TABLE_NAME ){
-            throw new RuntimeException("don't insert"); // TODO: add to resource
+            throw new RuntimeException("don't insert");
         }
 
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        // TODO: if we want delete only one row, we can't, only all rows
         int result = 0;
         if (db != null) {
             result = db.delete(tableName, selection, selectionArgs);
@@ -118,11 +113,10 @@ public class GTOContentProvider extends ContentProvider {
         String tableName = ContentDescriptor.getTableName(uriType);
 
         if( tableName == ContentDescriptor.GamesWithPlayersNames.TABLE_NAME ){
-            throw new RuntimeException("don't insert"); // TODO: add to resource
+            throw new RuntimeException("don't insert");
         }
 
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        // TODO: if we want update only one row, we can't, only all rows
         int result = 0;
         try {
             if (db != null) {

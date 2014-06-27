@@ -34,7 +34,6 @@ public class EndGameFragment extends Fragment {
         againBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // TODO: join with earlier queries
                 // add new Game to bd
                 insertGameToDB( gameInfo );
 
@@ -47,7 +46,6 @@ public class EndGameFragment extends Fragment {
         enoughBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // TODO: join with earlier queries
                 // add new Game to bd
                 insertGameToDB( gameInfo );
 

@@ -26,14 +26,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
-//CRDone must have postfix "Task"
 public class GoogleSuggestionTask extends AsyncTask<String, Void , List<String>> {
 
     private static final String GOOGLEAPIURL = "http://suggestqueries.google.com/complete/search?client=toolbar&q=";
     private final TextView suggestions;
     private final Button gameStartButton;
     private final EditText query;
-    //CRDone Use Java Naming Standards for Constant values
     private static final int NUMBER_OF_SUGGESTIONS = 5;
     private static final String LOG_TAG = "GoogolToOne";
 
@@ -49,7 +47,6 @@ public class GoogleSuggestionTask extends AsyncTask<String, Void , List<String>>
 
     @Override
     protected List<String> doInBackground(String... query) {
-        //CRDone Simplify: return getXML(getURL(query[0]))
         return getXML(getURL(query[0]));
 
     }
@@ -57,7 +54,6 @@ public class GoogleSuggestionTask extends AsyncTask<String, Void , List<String>>
     @Override
     protected void onPostExecute(List<String> arrayList) {
 
-        //CRDone Use TextUtils.isEmpty()
         if (!isCancelled()) {
             if (TextUtils.isEmpty(query.getText().toString())) {
                 suggestions.setText(R.string.query_empty);
@@ -65,7 +61,6 @@ public class GoogleSuggestionTask extends AsyncTask<String, Void , List<String>>
                 roundInfo.setGoogleAnswers(null);
             } else if (arrayList != null) {
                 roundInfo.setGoogleAnswers(new Vector<String>(arrayList));
-
                 suggestions.setText("");
                 for (String suggestion : arrayList) {
                     suggestions.append(suggestion + "\n");
@@ -84,26 +79,24 @@ public class GoogleSuggestionTask extends AsyncTask<String, Void , List<String>>
             return GOOGLEAPIURL + URLEncoder.encode(query, "UTF-8");
         }
         catch (UnsupportedEncodingException e) {
-            //CRDone Add logging
             Log.i(LOG_TAG, "Unsupported encoding");
             return null;
         }
     }
 
-    //CRDone Use List<String> as return statement
     private List<String> getXML (String queryURL) {
         InputStream inputStream = null;
         try {
             URL url = new URL(queryURL);
             URLConnection connection = url.openConnection();
             inputStream = new BufferedInputStream(connection.getInputStream());
-            Document doc = parseXML(inputStream); //CRDone Close input stream in finally block
+            Document doc = parseXML(inputStream);
             NodeList suggestions = doc.getElementsByTagName("suggestion");
             return checkResults(suggestions);
         }
         catch (Exception e){
             Log.i(LOG_TAG, "Connection error");
-            return null;     //CRDone Add logging
+            return null;
         }
         finally {
             if (inputStream != null) {

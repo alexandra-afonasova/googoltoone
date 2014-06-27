@@ -35,12 +35,11 @@
 
     </LinearLayout>
 
-    <!-- CR write attributes in following order: id, layout_width, layout_height, other -->
     <Button
             android:id="@+id/continue_button"
-            android:text="@string/guess_button"
             android:layout_width="@dimen/button_width"
             android:layout_height="wrap_content"
+            android:text="@string/guess_button"
             android:layout_gravity="center_horizontal"
             android:layout_weight="0"
             android:layout_marginBottom="@dimen/button_margin_bottom"/>

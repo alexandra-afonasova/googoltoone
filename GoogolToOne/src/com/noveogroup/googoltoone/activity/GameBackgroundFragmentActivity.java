@@ -11,7 +11,6 @@ import com.noveogroup.googoltoone.fragment.FragmentUtils;
 import com.noveogroup.googoltoone.fragment.QueryFragment;
 import com.noveogroup.googoltoone.gamelogic.GameInfo;
 
-//CRDONE fix typo
 public class GameBackgroundFragmentActivity extends FragmentActivity implements ScoreUpdater {
 
     private GameInfo gameInfo;
@@ -45,10 +44,8 @@ public class GameBackgroundFragmentActivity extends FragmentActivity implements 
             return;
         }
 
-        //CRDONE Create and use method newInstance()
         Fragment queryFragment = QueryFragment.newInstance();
 
-        //CRDONE use FragmentUtils.startFragment()
         FragmentUtils.startFragment( queryFragment, getSupportFragmentManager() );
     }
 

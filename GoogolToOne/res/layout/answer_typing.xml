@@ -33,7 +33,6 @@
             android:textSize="@dimen/text_size"
             android:padding="@dimen/activity_global_padding"/>
 
-    <!--TODO: maybe choose input type with correction-->
     <EditText
             android:id="@+id/answer"
             android:layout_width="match_parent"
@@ -42,7 +41,6 @@
             android:hint="@string/default_answer_ans_typ"
             android:inputType="text"/>
 
-    <!-- TODO: How can i scale to width every images? -->
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">

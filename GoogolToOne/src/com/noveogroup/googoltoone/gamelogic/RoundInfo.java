@@ -32,7 +32,6 @@ public class RoundInfo {
         this.googleAnswers = googleAnswers;
     }
 
-    // CRDONE names of boolean methods must started by is... was... need... etc.
     public boolean isAnswerCorrect(String answer) {
         if (!googleAnswers.contains(answer)) {
             // add to error's counter
@@ -52,7 +51,6 @@ public class RoundInfo {
             return false;
         }
 
-        // TODO: create rules
         roundScoreAnswerer += lastAddScore;
 
         return true;
@@ -70,7 +68,6 @@ public class RoundInfo {
         return roundScoreAnswerer;
     }
 
-    //CRDONE Fix typo. Maybe better use one term for attempts/efforts
     public boolean reduceAttempts() {
         return (--numberAttempts == 0);
     }

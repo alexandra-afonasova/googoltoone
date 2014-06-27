@@ -34,7 +34,6 @@ public class QueryFragment extends Fragment {
         continueButton.setEnabled(false);
 
         roundInfo = new RoundInfo();
-        // TODO: what is correct way?  CR Try to use singleton?
         ((GameBackgroundFragmentActivity)getActivity()).getGameInfo().setCurrentRound( roundInfo );
 
         query.addTextChangedListener(new TextWatcher() {
@@ -60,9 +59,8 @@ public class QueryFragment extends Fragment {
                 roundInfo.setBeginRequest( query.getText().toString() );
 
                 //replace this fragment with the answer fragment
-                Fragment answerTyping = AnswerTypingFragment.newInstance(); //CRDONE Create and use method newInstance()
+                Fragment answerTyping = AnswerTypingFragment.newInstance();
 
-                //CRDONE Use FragmentUtils.startFragment()
                 FragmentUtils.startFragment( answerTyping, getFragmentManager() );
             }
         });

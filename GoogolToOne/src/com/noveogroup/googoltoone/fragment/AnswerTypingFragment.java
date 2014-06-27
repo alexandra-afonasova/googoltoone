@@ -13,7 +13,7 @@ import com.noveogroup.googoltoone.activity.GameBackgroundFragmentActivity;
 import com.noveogroup.googoltoone.gamelogic.RoundInfo;
 
 public class AnswerTypingFragment extends Fragment {
-    //CRDONE Better to use formatter string in from resources
+
     private TextView beginRequestTV;
     private EditText answerET;
     private Button checkBtn;
@@ -25,7 +25,7 @@ public class AnswerTypingFragment extends Fragment {
         View view = inflater.inflate(R.layout.answer_typing, container, false);
 
         GameBackgroundFragmentActivity parentActivity = (GameBackgroundFragmentActivity) getActivity();
-        //CR Better if GameInfo were implement Parcelable and give gameInfo in arguments. Or use singleton pattern for GameInfo and RoundInf0
+
         roundInfo = parentActivity.getGameInfo().getCurrentRound();
 
         beginRequestTV = (TextView) view.findViewById(R.id.begin_request);
@@ -50,7 +50,7 @@ public class AnswerTypingFragment extends Fragment {
 
         // if correct guessed
         if( roundInfo.isAnswerCorrect(roundInfo.getBeginRequest() + " " + answerStr) ){
-            //CRDONE Use string formatter. Add space before scores
+
             Toast.makeText( getActivity(), getResources().getString(R.string.check_answer_correct_fmt_ans_typ, roundInfo.getLastAddScore() ), Toast.LENGTH_SHORT).show();
         } else{
             Toast.makeText( getActivity(), getResources().getString(R.string.check_answer_try_again_ans_typ), Toast.LENGTH_SHORT).show();
@@ -73,18 +73,15 @@ public class AnswerTypingFragment extends Fragment {
             curErrorImg.setImageResource( R.drawable.error_light );
         }
 
-        //CRDONE Cast to ScoreUpdater interface
         ScoreUpdater parentActivity = (ScoreUpdater) getActivity();
         parentActivity.updateScore();
 
         // if round end then switch fragment
         if( roundInfo.reduceAttempts() || roundInfo.getCurrentNumberOfErrors() == 3 ){
             // switch next to round end
-            //CRDONE Create and use newInstance() method instead of constructor
             Fragment roundResult = RoundResultFragment.newInstance();
 
             FragmentUtils.startFragment( roundResult, getFragmentManager() );
-            //CRDONE You did this into FragmentUtils.startFragment()
         }
     }
 

@@ -15,8 +15,6 @@ import java.util.ArrayList;
 
 public class GameStartActivity extends android.app.Activity {
 
-    //CRDone Remove these tags and use their from GameBackgroungFragmentActivity
-
     private AutoCompleteTextView player1;
     private AutoCompleteTextView player2;
 
